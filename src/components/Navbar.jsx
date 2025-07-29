@@ -11,8 +11,8 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-[#004030] border-gray-200 ">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <nav className="bg-[#437057] border-gray-200 ">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4">
         <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src={Logo} className="h-10" alt="Kab Garut Logo" />
           <span className="self-center text-xl font-semibold whitespace-nowrap text-white ">Desa Cipareuan</span>
@@ -38,13 +38,16 @@ export default function Navbar() {
               <Link to={'/profile'} className="block py-2 px-3 text-white hover:text-[#F1BA88] rounded-sm  md:hover:bg-transparent md:border-0 md:p-0 ">Profile</Link>
             </li>
             <li>
-              <a href="#" className="block py-2 px-3 text-white hover:text-[#F1BA88] rounded-sm  md:hover:bg-transparent md:border-0 md:p-0 ">Infografis</a>
+              <Link to={'/infografis'} className="block py-2 px-3 text-white hover:text-[#F1BA88] rounded-sm  md:hover:bg-transparent md:border-0 md:p-0 ">Infografis</Link>
+            </li>
+            <li>
+              <Link to={'/news'} className="block py-2 px-3 text-white hover:text-[#F1BA88] rounded-sm  md:hover:bg-transparent md:border-0 md:p-0 ">News</Link>
             </li>
             <li>
               <a href="#" className="block py-2 px-3 text-white hover:text-[#F1BA88] rounded-sm  md:hover:bg-transparent md:border-0 md:p-0 ">Pricing</a>
             </li>
             <li>
-              <a href="#" className="block py-2 px-3 text-white hover:text-[#F1BA88] rounded-sm  md:hover:bg-transparent md:border-0 md:p-0 ">Contact</a>
+              <Link to={'/contact'} className="block py-2 px-3 text-white hover:text-[#F1BA88] rounded-sm  md:hover:bg-transparent md:border-0 md:p-0 ">Contact</Link>
             </li>
           </ul>
         </div>
