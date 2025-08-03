@@ -4,6 +4,7 @@ import Profile from "./pages/Profile";
 import News from "./pages/News";
 import Contact from "./pages/Contact";
 import Infografis from "./pages/Infografis";
+import Struktur from "./pages/Struktur";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/infografis" element={<Infografis />} />
           <Route path="/news" element={<News />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/struktur-pemerintahan" element={<Struktur />} />
         </Routes>
       </Router>
     </>

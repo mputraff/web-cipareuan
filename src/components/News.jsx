@@ -11,12 +11,7 @@ export default function News() {
 
           {/* Gambar Grid Masonry */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <CardNews />
-            <CardNews />
-            <CardNews />
-            <CardNews />
-            <CardNews />
-            <CardNews />
+            
           </div>
         </div>
       </section>
