@@ -101,6 +101,7 @@ export default function Profile() {
                   </div>
                 )}
 
+                {/* mata pencaharian */}
                 {data.table?.mata_pencaharian && (
                   <div className="overflow-x-auto">
                     <h4 className="text-lg font-semibold mb-1">
@@ -115,6 +116,30 @@ export default function Profile() {
                       </thead>
                       <tbody>
                         {data.table.mata_pencaharian.map((row, index) => (
+                          <tr key={index}>
+                            <td className="px-3 py-2 border">{row.label}</td>
+                            <td className="px-3 py-2 border">{row.jumlah}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+
+                {data.table?.pajak && (
+                  <div className="overflow-x-auto">
+                    <h4 className="text-lg font-semibold mb-1">
+                      Pajak dan Retribusi Desa
+                    </h4>
+                    <table className="table-auto w-full text-left border mb-4">
+                      <thead className="bg-gray-100">
+                        <tr>
+                          <th className="px-3 py-2 border">Tahun</th>
+                          <th className="px-3 py-2 border">Pajak Desa</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {data.table.pajak.map((row, index) => (
                           <tr key={index}>
                             <td className="px-3 py-2 border">{row.label}</td>
                             <td className="px-3 py-2 border">{row.jumlah}</td>
