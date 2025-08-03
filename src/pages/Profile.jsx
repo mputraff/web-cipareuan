@@ -109,7 +109,7 @@ export default function Profile() {
                     <table className="table-auto w-full text-left border mb-4">
                       <thead className="bg-gray-100">
                         <tr>
-                          <th className="px-3 py-2 border">Tingkat</th>
+                          <th className="px-3 py-2 border">Pekerjaan</th>
                           <th className="px-3 py-2 border">Jumlah</th>
                         </tr>
                       </thead>

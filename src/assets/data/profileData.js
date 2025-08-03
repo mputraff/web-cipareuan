@@ -7,7 +7,7 @@ const profileData = [
   {
     id: 1,
     src: imageAbout,
-    title: "Tentang Desa",
+    title: "",
     alt: "profile-image",
     desc: "Desa Cipareuan merupakan salah satu desa yang terdapat di Kabupaten Garut, yang terdiri dari 10 RW dan 39 RT. Jarak Desa Cipareuan ke Ibu Kota Kecamatan Cibiuk sekitar 0,5 Km...",
   },
@@ -62,6 +62,14 @@ const profileData = [
         { label: "Karyawan Swasta", jumlah: 126 },
         { label: "PNS", jumlah: 46 },
         { label: "Peternak", jumlah: 78 },
+      ],
+      pajak: [
+        { label: "PAUD/TK", jumlah: 5 },
+        { label: "SD ", jumlah: 4 },
+        { label: "SMP ", jumlah: 2 },
+        { label: "SMA ", jumlah: 1 },
+        { label: "Madrasah ", jumlah: 14 },
+        { label: "Pondok Pesantren ", jumlah: 3 },
       ],
     },
   },
