@@ -153,7 +153,7 @@ export default function Profile() {
 
             ))}
           </div>
-          <aside className="w-1/5">
+          <aside className="w-1/5 lg:w-1/5 h-fit sticky top-5">
             <BlogCard />
           </aside>
         </div>

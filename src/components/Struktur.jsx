@@ -8,7 +8,7 @@ export default function Struktur() {
       <div className="max-w-screen-xl w-full flex flex-col gap-8">
         <div className="flex flex-col">
           <h2 className="text-4xl font-bold">SOTK</h2>
-          <p className="text-gray-600">
+          <p className="text-gray-600 font-semibold">
             Struktur Organisasi Tata Kerja Cipareuan
           </p>
         </div>
@@ -20,7 +20,7 @@ export default function Struktur() {
               key={orang.id}
               className="max-w-sm bg-[#437057] border border-gray-200 rounded-lg shadow-sm "
             >
-              <img className="rounded-t-lg w-full h-52 object-cover" src={orang.src} alt={orang.nama} />
+              <img className="rounded-t-lg w-full h-72 object-cover" src={orang.src} alt={orang.nama} />
               <div className="p-5 text-center">
                 <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                   {orang.nama}
@@ -35,7 +35,7 @@ export default function Struktur() {
 
         <div className="text-right">
           <Link to="/struktur-pemerintahan" href="">
-            <p className="text-blue-600 hover:underline">Lihat Struktur Lebih Lengkap</p>
+            <p className="font-semibold hover:underline">Lihat Struktur Lebih Lengkap</p>
           </Link>
         </div>
       </div>
