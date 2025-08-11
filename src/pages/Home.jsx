@@ -13,7 +13,7 @@ export default function Home() {
         <Navbar />
       </header>
       <section className="h-svh bg-[url('../src/assets/img/home.png')] bg-center bg-cover"></section>
-      <section className="flex flex-col gap-4 mt-4">
+      <section className="flex flex-col gap-4 mt-4 bg-[#FFFFF0]">
         <Struktur />
         <Galeri />
         <Maps />

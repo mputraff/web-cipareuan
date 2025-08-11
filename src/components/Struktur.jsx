@@ -4,7 +4,7 @@ import strukturOrganisasi from "../assets/data/strukturOrganisasi";
 
 export default function Struktur() {
   return (
-    <section className="h-fit flex justify-center px-4">
+    <section className="h-fit flex justify-center px-4 ">
       <div className="max-w-screen-xl w-full flex flex-col gap-8">
         <div className="flex flex-col">
           <h2 className="text-4xl font-bold">SOTK</h2>

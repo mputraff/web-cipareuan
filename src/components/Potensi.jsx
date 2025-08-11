@@ -1,7 +1,7 @@
 export default function Potensi() {
   return (
     <>
-      <section className="min-h-screen flex justify-center items-center px-4">
+      <section className="min-h-screen flex justify-center items-center px-4 ">
         <div className="max-w-screen-xl w-full border flex flex-col gap-8">
           <div className="flex flex-col">
             <h2 className="text-4xl font-bold">Potensi Desa</h2>

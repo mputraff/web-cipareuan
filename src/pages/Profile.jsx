@@ -9,8 +9,8 @@ export default function Profile() {
       <Navbar />
       {/* About */}
       <section className="py-12 px-4 bg-[#FFFFF0] text-gray-800">
-        <div className="max-w-screen-xl mx-auto flex lg:flex-row gap-6">
-          <div className="w-full lg:w-4/5 flex flex-col border rounded-lg shadow-lg border-[#437057] py-4 px-8 bg-white">
+        <div className="max-w-screen-xl mx-auto flex flex-row gap-6 max-lg:flex-col">
+          <div className="w-4/5 flex flex-col border rounded-lg shadow-lg border-[#437057] py-4 px-8 bg-white max-lg:bg-[#FFFFF0]  max-lg:w-full">
             <h2 className="text-3xl font-bold ">Profile Desa Cipareuan</h2>
             {profileData.map((data) => (
               <div key={data.id} className="my-3 flex flex-col gap-4">
@@ -153,7 +153,7 @@ export default function Profile() {
 
             ))}
           </div>
-          <aside className="w-1/5 lg:w-1/5 h-fit sticky top-5">
+          <aside className="w-1/5 h-fit max-lg:hidden sticky top-5 max-lg:w-full">
             <BlogCard />
           </aside>
         </div>

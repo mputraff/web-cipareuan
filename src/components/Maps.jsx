@@ -4,9 +4,9 @@ import { faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
 export default function Maps() {
   return (
     <>
-      <section className="h-screen flex justify-center items-center">
+      <section className="h-screen flex justify-center items-center max-lg:px-5">
         <div className="max-w-screen-xl w-full flex flex-col justify-between gap-20">
-          <div className="flex justify-between">
+          <div className="flex justify-between max-lg:flex-col">
             <div className="flex flex-col text-justify gap-2">
               <h2 className="text-2xl font-semibold">Hubungi Kami</h2>
               <p className="max-w-96">

@@ -1,26 +1,25 @@
 import galeri1 from "../assets/img/galeri1.jpg"
+import { Link } from "react-router-dom";
 
-export default function CardNews() {
+export default function CardNews({id, title, image, alt, desc, backgrond}) {
   return (
     <>
-      <div >
-        <div className="max-w-sm bg-[#437057] border border-gray-200 rounded-lg shadow-sm">
-          <a href="#">
-            <img className="rounded-t-lg" src={galeri1} alt="Blog cover" />
-          </a>
+        <div className={`max-w-sm ${backgrond} border border-gray-200 rounded-lg shadow-sm max-xl:max-w-full`}>
+          <Link to={`/berita/${id}`}>
+            <img className="rounded-t-lg" src={image} alt="Blog cover" />
+          </Link>
           <div className="p-5">
             <a href="#">
-              <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
-                Noteworthy technology acquisitions 2021
+              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+                {title}
               </h5>
             </a>
-            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 text-justify">
-              Here are the biggest enterprise technology acquisitions of 2021 so
-              far, in reverse chronological order.
+            <p className="mb-3 font-normal text-gray-700 text-justify">
+              {desc}
             </p>
-            <a
-              href="#"
-              className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            <Link
+              to={`/berita/${id}`}
+              className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-[#437057] rounded-lg focus:ring-4 focus:outline-none"
             >
               Read more
               <svg
@@ -38,10 +37,10 @@ export default function CardNews() {
                   d="M1 5h12m0 0L9 1m4 4L9 9"
                 />
               </svg>
-            </a>
+            </Link>
           </div>
         </div>
-      </div>
+   
     </>
   );
 }

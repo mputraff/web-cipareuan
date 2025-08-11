@@ -5,13 +5,11 @@ export default function Contact() {
   return (
     <>
       <Navbar />
-      <section className="bg-[#FFFFF0]" id="contact">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+      <section className="bg-[#FFFFFF]" id="contact">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20 ">
           <div className="mb-4">
             <div className="mb-6 max-w-3xl text-center sm:text-center md:mx-auto md:mb-12 text-[#437057]">
-              <p className="text-base font-semibold uppercase tracking-wide">
-                Contact
-              </p>
+              
               <h2 className="font-heading mb-4 font-bold tracking-tight text-3xl sm:text-5xl">
                 Hubungi Kami
               </h2>
@@ -23,12 +21,12 @@ export default function Contact() {
           <div className="flex items-stretch justify-center">
             <div className="grid md:grid-cols-2">
               <div className="h-full pr-6">
-                <p className="mt-3 mb-12 text-lg text-[#437057] text-justify">
+                <p className="mt-3 mb-12 text-lg text-[#437057] text-justify max-lg:px-5">
                   Kami senang mendengar dari Anda! Jika Anda memiliki
                   pertanyaan, membutuhkan dukungan, atau ingin mempelajari lebih
                   lanjut tentang layanan kami, tim kami siap membantu.
                 </p>
-                <ul className="mb-6 md:mb-0">
+                <ul className="mb-6 md:mb-0 max-lg:px-5">
                   {/* Address */}
                   <li className="flex">
                     <div className="flex h-10 w-10 items-center justify-center rounded bg-[#437057] text-gray-50">
