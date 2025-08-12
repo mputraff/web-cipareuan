@@ -8,9 +8,9 @@ export default function Profile() {
     <>
       <Navbar />
       {/* About */}
-      <section className="py-12 px-4 bg-[#FFFFF0] text-gray-800">
+      <section className="py-12 px-4 bg-[#FFFFF0] max-lg:bg-[#FFFFFF] text-gray-800 max-lg:py-4">
         <div className="max-w-screen-xl mx-auto flex flex-row gap-6 max-lg:flex-col">
-          <div className="w-4/5 flex flex-col border rounded-lg shadow-lg border-[#437057] py-4 px-8 bg-white max-lg:bg-[#FFFFF0]  max-lg:w-full">
+          <div className="w-4/5 flex flex-col border rounded-lg shadow-lg border-[#437057] py-4 px-8 bg-white max-lg:w-full max-lg:border-none max-lg:shadow-none">
             <h2 className="text-3xl font-bold ">Profile Desa Cipareuan</h2>
             {profileData.map((data) => (
               <div key={data.id} className="my-3 flex flex-col gap-4">

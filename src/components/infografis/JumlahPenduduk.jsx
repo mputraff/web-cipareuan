@@ -1,37 +1,36 @@
+// JumlahPenduduk.jsx
 import infografisData from "../../assets/data/infografisData";
 
 export default function JumlahPenduduk() {
   return (
-    <>
-      <div className="flex justify-between items-center gap-12 pt-8">
-        <div className="flex flex-col justify-center gap-2 w-full">
-          <h2 className="text-3xl font-bold">
-            Jumlah Penduduk dan Kepala Keluarga
-          </h2>
-          <div className="flex flex-wrap justify-between">
-            {infografisData.map((data) => (
-              <div
-                key={data.id}
-                className="flex flex-col items-center bg-white border border-gray-200 rounded-lg h-36 mt-4 w-full shadow-sm md:flex-row md:max-w-xl"
-              >
-                <img
-                  className="object-cover w-full rounded-t-lg md:h-auto md:w-32 md:rounded-none md:rounded-s-lg"
-                  src={data.src}
-                  alt="Technology Acquisition"
-                />
-                <div className="flex flex-col justify-between p-4 leading-normal">
-                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
-                    {data.title}
-                  </h5>
-                  <p className="mb-3 font-semibold text-gray-700 text-2xl text-justify">
-                    {data.jumlah}
-                  </p>
-                </div>
+    <div className="flex justify-between items-center gap-12 pt-8">
+      <div className="flex flex-col justify-center gap-2 w-full">
+        <h2 className="text-3xl font-bold max-lg:text-2xl">
+          Jumlah Penduduk dan Kepala Keluarga
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+          {infografisData.map((data) => (
+            <div
+              key={data.id}
+              className="flex items-center bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden "
+            >
+              <img
+                className="object-contain w-32 aspect-square bg-gray-50"
+                src={data.src}
+                alt={data.title}
+              />
+              <div className="flex flex-col justify-center p-4 text-left">
+                <h5 className="mb-1 text-xl font-bold text-gray-900">
+                  {data.title}
+                </h5>
+                <p className="font-semibold text-gray-700 text-xl">
+                  {data.jumlah}
+                </p>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }

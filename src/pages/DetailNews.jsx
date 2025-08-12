@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar";
 import beritaList from "../assets/data/beritaData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-solid-svg-icons/faClock";
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons/faUser";
 
 export default function DetailNews() {
   const { id } = useParams();
@@ -12,13 +14,24 @@ export default function DetailNews() {
     <>
       <Navbar />
       <section className="bg-[#FFFFF0] min-h-screen flex justify-center">
-        <div className="max-w-screen-xl w-full my-8 p-9 bg-white border max-lg:border-none max-lg:bg-[#FFFFF0] max-lg:my-0 rounded-xl shadow-md">
+        <div className="max-w-screen-xl w-full my-8 p-9 bg-white border max-lg:border-none max-lg:my-0 rounded-xl shadow-md">
           <div className="flex max-lg:flex-col gap-6">
             {/* Konten Detail Berita */}
             <div className="w-3/4 p-4 max-lg:w-full max-lg:p-0">
-              <h1 className="text-3xl max-md:text-xl max-md:text-justify font-bold mb-4">
+              <p>
+                <FontAwesomeIcon icon={faHouse} /> / berita desa Cipareuan
+              </p>
+              <h1 className="text-3xl max-md:text-xl max-md:text-justify font-bold my-2">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus, placeat blanditiis.
               </h1>
+              <div className="flex my-3 gap-4 max-lg:text-sm">
+                <p>
+                  <FontAwesomeIcon icon={faClock} /> 23 Agustus 2025
+                </p>
+                <p>
+                  <FontAwesomeIcon icon={faUser} /> Ditulis oleh Administrator
+                </p>
+              </div>
               <img className="shadow-md rounded-md mb-3" src="https://flowbite.com/docs/images/blog/image-1.jpg" alt="" />
               <p className="text-gray-700 text-justify">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere
@@ -35,6 +48,10 @@ export default function DetailNews() {
                 placeat vitae alias optio beatae eveniet nemo vel numquam
                 labore, dolor fugit nam!
               </p>
+
+              <div className="my-2">
+                <p><span className="font-semibold"> Bagikan :</span> </p>
+              </div>
             </div>
 
             {/* Sidebar Berita Lainnya */}
@@ -42,7 +59,7 @@ export default function DetailNews() {
               <h2 className="text-xl font-semibold">Berita Lainnya</h2>
 
               {/* Card Berita Lain */}
-              {beritaList.map((berita) => (
+              {beritaList.slice(0, 6).map((berita) => (
                 <Link className="flex p-2 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100">
                   <img
                     className="object-cover h-20 w-20 "

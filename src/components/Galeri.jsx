@@ -1,5 +1,3 @@
-
-
 export default function Galeri() {
   return (
     <section className="min-h-screen flex justify-center items-center px-4">
@@ -10,99 +8,29 @@ export default function Galeri() {
         </div>
 
         {/* Gambar Grid Masonry */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="grid gap-4">
-            <div>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {[
+            "image.jpg",
+            "image-1.jpg",
+            "image-2.jpg",
+            "image-3.jpg",
+            "image-4.jpg",
+            "image-5.jpg",
+            "image-6.jpg",
+            "image-7.jpg",
+            "image-8.jpg",
+            "image-9.jpg",
+            "image-10.jpg",
+            "image-11.jpg",
+          ].map((img, index) => (
+            <div key={index}>
               <img
                 className="h-auto max-w-full rounded-lg"
-                src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg"
-                alt="Galeri 1"
+                src={`https://flowbite.s3.amazonaws.com/docs/gallery/square/${img}`}
+                alt={`Galeri Desa ${index + 1}`}
               />
             </div>
-            <div>
-              <img
-                className="h-auto max-w-full rounded-lg"
-                src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg"
-                alt="Galeri 2"
-              />
-            </div>
-            <div>
-              <img
-                className="h-auto max-w-full rounded-lg"
-                src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg"
-                alt="Galeri 3"
-              />
-            </div>
-          </div>
-          <div className="grid gap-4">
-            <div>
-              <img
-                className="h-auto max-w-full rounded-lg"
-                src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg"
-                alt="Galeri 4"
-              />
-            </div>
-            <div>
-              <img
-                className="h-auto max-w-full rounded-lg"
-                src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg"
-                alt="Galeri 5"
-              />
-            </div>
-            <div>
-              <img
-                className="h-auto max-w-full rounded-lg"
-                src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg"
-                alt="Galeri 6"
-              />
-            </div>
-          </div>
-          <div className="grid gap-4">
-            <div>
-              <img
-                className="h-auto max-w-full rounded-lg"
-                src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg"
-                alt="Galeri 7"
-              />
-            </div>
-            <div>
-              <img
-                className="h-auto max-w-full rounded-lg"
-                src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg"
-                alt="Galeri 8"
-              />
-            </div>
-            <div>
-              <img
-                className="h-auto max-w-full rounded-lg"
-                src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg"
-                alt="Galeri 9"
-              />
-            </div>
-          </div>
-          <div className="grid gap-4">
-            <div>
-              <img
-                className="h-auto max-w-full rounded-lg"
-                src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg"
-                alt="Galeri 10"
-              />
-            </div>
-            <div>
-              <img
-                className="h-auto max-w-full rounded-lg"
-                src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg"
-                alt="Galeri 11"
-              />
-            </div>
-            <div>
-              <img
-                className="h-auto max-w-full rounded-lg"
-                src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg"
-                alt="Galeri 12"
-              />
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

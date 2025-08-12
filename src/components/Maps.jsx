@@ -6,29 +6,33 @@ export default function Maps() {
     <>
       <section className="h-screen flex justify-center items-center max-lg:px-5">
         <div className="max-w-screen-xl w-full flex flex-col justify-between gap-20">
-          <div className="flex justify-between max-lg:flex-col">
+          <div className="flex justify-between max-lg:flex-col max-lg:gap-8">
             <div className="flex flex-col text-justify gap-2">
               <h2 className="text-2xl font-semibold">Hubungi Kami</h2>
-              <p className="max-w-96">
+              <p className="max-w-96 max-lg:max-w-full">
                 Kami senang mendengar dari Anda! Jika Anda memiliki pertanyaan,
                 membutuhkan dukungan, atau ingin mempelajari lebih lanjut
                 tentang layanan kami, tim kami siap membantu.
               </p>
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col max-lg:flex-row max-lg:justify-between">
               <p className="text-2xl text-[#004030]">
                 <FontAwesomeIcon icon={faLocationDot} />
               </p>
-              <h2 className="font-semibold mt-2">Alamat Kami</h2>
-              <p> Cipareuan kec. Cibiuk, Garut, Jawa Barat, Indonesia. </p>
+              <div>
+                <h2 className="font-semibold mt-2 max-lg:mt-0">Alamat Kami</h2>
+                <p> Cipareuan kec. Cibiuk, Garut, Jawa Barat, Indonesia. </p>
+              </div>
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col max-lg:flex-row max-lg:gap-14">
               <p className="text-2xl">
                 <FontAwesomeIcon icon={faPhone} />
               </p>
-              <h2 className="font-semibold mt-3">Contact kami</h2>
-              <p>+6244012947126</p>
-              <p>cipareuan@gmail.com</p>
+              <div>
+                <h2 className="font-semibold mt-3 max-lg:mt-0">Contact kami</h2>
+                <p>+6244012947126</p>
+                <p>cipareuan@gmail.com</p>
+              </div>
             </div>
           </div>
           <div className="w-full h-96 border">
