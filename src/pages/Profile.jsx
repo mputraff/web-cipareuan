@@ -11,24 +11,30 @@ export default function Profile() {
       <section className="py-12 px-4 bg-[#FFFFF0] max-lg:bg-[#FFFFFF] text-gray-800 max-lg:py-4">
         <div className="max-w-screen-xl mx-auto flex flex-row gap-6 max-lg:flex-col">
           <div className="w-4/5 flex flex-col border rounded-lg shadow-lg border-[#437057] py-4 px-8 bg-white max-lg:w-full max-lg:border-none max-lg:shadow-none">
-            <h2 className="text-3xl font-bold ">Profile Desa Cipareuan</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
+              Profile Desa Cipareuan
+            </h2>
             {profileData.map((data) => (
               <div key={data.id} className="my-3 flex flex-col gap-4">
-                <h3 className="text-2xl font-bold">{data.title}</h3>
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold">
+                  {data.title}
+                </h3>
                 <img
                   src={data.src}
                   alt={data.alt}
-                  className="rounded shadow-lg"
+                  className="rounded shadow-lg w-full h-48 sm:h-64 md:h-80 object-cover"
                 />
-                <p className="text-gray-700 text-justify">{data.desc}</p>
+                <p className="text-sm sm:text-base md:text-lg text-gray-700 text-justify">
+                  {data.desc}
+                </p>
 
                 {/* Render TABEL jika ada */}
                 {data.table?.usia && (
                   <div className="overflow-x-auto">
-                    <h4 className="text-lg font-semibold mb-1">
+                    <h4 className="text-base sm:text-lg md:text-xl font-semibold mb-1">
                       Komposisi Penduduk Berdasarkan Usia
                     </h4>
-                    <table className="table-auto w-full text-left border mb-4">
+                    <table className="table-auto w-full text-left border mb-4 text-xs sm:text-sm md:text-base">
                       <thead className="bg-gray-100">
                         <tr>
                           <th className="px-3 py-2 border">Usia</th>
@@ -41,9 +47,7 @@ export default function Profile() {
                           <tr key={index}>
                             <td className="px-3 py-2 border">{row.label}</td>
                             <td className="px-3 py-2 border">{row.laki}</td>
-                            <td className="px-3 py-2 border">
-                              {row.perempuan}
-                            </td>
+                            <td className="px-3 py-2 border">{row.perempuan}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -54,10 +58,10 @@ export default function Profile() {
                 {/* Pendidikan */}
                 {data.table?.pendidikan && (
                   <div className="overflow-x-auto">
-                    <h4 className="text-lg font-semibold mb-1">
+                    <h4 className="text-base sm:text-lg md:text-xl font-semibold mb-1">
                       Pendidikan Penduduk
                     </h4>
-                    <table className="table-auto w-full text-left border mb-4">
+                    <table className="table-auto w-full text-left border mb-4 text-xs sm:text-sm md:text-base">
                       <thead className="bg-gray-100">
                         <tr>
                           <th className="px-3 py-2 border">Tingkat</th>
@@ -79,10 +83,10 @@ export default function Profile() {
                 {/* Sarana Pendidikan */}
                 {data.table?.sarana && (
                   <div className="overflow-x-auto">
-                    <h4 className="text-lg font-semibold mb-1">
+                    <h4 className="text-base sm:text-lg md:text-xl font-semibold mb-1">
                       Sarana Penduduk
                     </h4>
-                    <table className="table-auto w-full text-left border mb-4">
+                    <table className="table-auto w-full text-left border mb-4 text-xs sm:text-sm md:text-base">
                       <thead className="bg-gray-100">
                         <tr>
                           <th className="px-3 py-2 border">Tingkat</th>
@@ -101,13 +105,13 @@ export default function Profile() {
                   </div>
                 )}
 
-                {/* mata pencaharian */}
+                {/* Mata Pencaharian */}
                 {data.table?.mata_pencaharian && (
                   <div className="overflow-x-auto">
-                    <h4 className="text-lg font-semibold mb-1">
+                    <h4 className="text-base sm:text-lg md:text-xl font-semibold mb-1">
                       Mata Pencaharian
                     </h4>
-                    <table className="table-auto w-full text-left border mb-4">
+                    <table className="table-auto w-full text-left border mb-4 text-xs sm:text-sm md:text-base">
                       <thead className="bg-gray-100">
                         <tr>
                           <th className="px-3 py-2 border">Pekerjaan</th>
@@ -126,12 +130,13 @@ export default function Profile() {
                   </div>
                 )}
 
+                {/* Pajak */}
                 {data.table?.pajak && (
                   <div className="overflow-x-auto">
-                    <h4 className="text-lg font-semibold mb-1">
+                    <h4 className="text-base sm:text-lg md:text-xl font-semibold mb-1">
                       Pajak dan Retribusi Desa
                     </h4>
-                    <table className="table-auto w-full text-left border mb-4">
+                    <table className="table-auto w-full text-left border mb-4 text-xs sm:text-sm md:text-base">
                       <thead className="bg-gray-100">
                         <tr>
                           <th className="px-3 py-2 border">Tahun</th>
@@ -150,9 +155,9 @@ export default function Profile() {
                   </div>
                 )}
               </div>
-
             ))}
           </div>
+
           <aside className="w-1/5 h-fit max-lg:hidden sticky top-5 max-lg:w-full">
             <BlogCard />
           </aside>
