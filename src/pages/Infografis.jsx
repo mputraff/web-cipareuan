@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import JumlahPenduduk from "../components/infografis/JumlahPenduduk";
 import JumlahAgama from "../components/infografis/JumlahAgama";
 import imageInfografis from "../assets/img/infografis.jpg";
-import PopulationChart from "../assets/chart/umurChart";
+import PopulationChart from "../assets/chart/UmurChart";
 import EducationChart from "../assets/chart/PendidikanChart";
 
 export default function Infografis() {
