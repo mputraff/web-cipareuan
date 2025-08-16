@@ -76,7 +76,7 @@ export default function Contact() {
                         Contact
                       </h3>
                       <p className="text-sm sm:text-base">Mobile: +6244012947126</p>
-                      <p className="text-sm sm:text-base">Mail: cipareuan@gmail.com</p>
+                      <p className="text-sm sm:text-base">Mail: desacipareuancibiuk@gmail.com</p>
                     </div>
                   </li>
 

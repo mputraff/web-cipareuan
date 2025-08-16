@@ -15,7 +15,7 @@ export default function Struktur() {
 
         {/* Gambar Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {strukturOrganisasi.map((orang) => (
+          {strukturOrganisasi.slice(0, 4).map((orang) => (
             <div
               key={orang.id}
               className="max-w-sm bg-[#437057] border border-gray-200 rounded-lg shadow-sm "
