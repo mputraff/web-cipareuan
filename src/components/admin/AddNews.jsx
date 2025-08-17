@@ -28,7 +28,7 @@ export default function AddNews({ isOpen, onClose, onSubmit }) {
 
   return (
     <div className="fixed inset-0 flex justify-center items-center z-50">
-      <div className="bg-white border border-gray-300 rounded-lg shadow-xl w-full max-w-lg p-6 relative">
+      <div className="bg-white border border-gray-300 rounded-lg shadow-xl w-full max-w-lg p-6 relative max-lg:mx-9">
         {/* Tombol close */}
         <button
           onClick={onClose}

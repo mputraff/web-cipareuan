@@ -7,6 +7,8 @@ import {
   BarChart,
   Menu,
   X,
+  SquarePen,
+  Trash
 } from "lucide-react";
 import adminPhoto from "../assets/img/profile.jpg"; // ganti dengan foto profil admin
 import beritaList from "../assets/data/beritaData";
@@ -140,20 +142,21 @@ export default function AdminDashboard() {
             </div>
             <table className="w-full border-collapse text-sm sm:text-base">
               <thead>
-                <tr className="bg-gray-100 text-left">
+                <tr className="bg-gray-100 text-center">
                   <th className="p-2 border">ID</th>
                   <th className="p-2 border">Title</th>
                   <th className="p-2 border">Desc</th>
                   <th className="p-2 border">Image</th>
                   <th className="p-2 border">Date</th>
+                  <th className="p-2 border">Action</th>
                 </tr>
               </thead>
               <tbody>
                 {beritaList.map((berita) => (
-                  <tr className="text-justify">
+                  <tr className="text-center">
                     <td className="p-2 border">{berita.id}</td>
                     <td className="p-2 border">{berita.title}</td>
-                    <td className="p-2 border w-1/2">{berita.desc}</td>
+                    <td className="p-2 border w-1/2 text-justify">{berita.desc}</td>
                     <td className="p-2 border">
                       <img
                         src={berita.image}
@@ -162,6 +165,14 @@ export default function AdminDashboard() {
                       />
                     </td>
                     <td className="p-2 border">{berita.date}</td>
+                    <td className="p-2 border">
+                      <button className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded mr-2 cursor-pointer">
+                        <SquarePen size={20} />
+                      </button>
+                      <button className="bg-red-500 hover:bg-red-600 text-white py-1 px-2 rounded cursor-pointer">
+                        <Trash size={20} />
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>

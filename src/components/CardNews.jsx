@@ -18,7 +18,7 @@ export default function CardNews({ id, title, image, alt, desc, backgrond }) {
             {title}
           </h5>
         </Link>
-        <p className="mb-3 font-normal text-sm sm:text-base md:text-lg text-gray-700 text-justify">
+        <p className="mb-3 font-normal text-sm sm:text-base md:text-sm text-gray-700 text-justify">
           {desc}
         </p>
         <Link
