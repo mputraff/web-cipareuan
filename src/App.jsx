@@ -6,6 +6,7 @@ import DetailNews from "./pages/DetailNews";
 import Contact from "./pages/Contact";
 import Infografis from "./pages/Infografis";
 import Struktur from "./pages/Struktur";
+import Admin from "./pages/LoginAdmin";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/berita/:id" element={<DetailNews />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/struktur-pemerintahan" element={<Struktur />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </Router>
     </>
