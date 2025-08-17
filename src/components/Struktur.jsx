@@ -22,10 +22,10 @@ export default function Struktur() {
             >
               <img className="rounded-t-lg w-full h-72 object-cover" src={orang.src} alt={orang.nama} />
               <div className="p-5 text-center">
-                <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="mb-2 text-xl font-bold tracking-tight text-white">
                   {orang.nama}
                 </h5>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                <p className="mb-3 font-normal text-white">
                   {orang.jabatan}
                 </p>
               </div>

@@ -6,6 +6,7 @@ import News from "../components/News";
 import Potensi from "../components/Potensi";
 import Struktur from "../components/Struktur";
 import ProfileImage from "../assets/img/profile.jpg";
+import { ReactTyped } from "react-typed";
 
 export default function Home() {
   return (
@@ -31,7 +32,16 @@ export default function Home() {
           {/* Sambutan */}
           <div className="flex flex-col gap-4 text-justify leading-relaxed text-gray-800">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-              Selamat datang di Website Desa Cipareuan
+              <ReactTyped
+                strings={[
+                  "Selamat datang di Website Desa Cipareuan",
+                  "Membangun Desa Bersama",
+                  "Transparansi, Partisipasi, Akuntabilitas",
+                ]}
+                typeSpeed={50}
+                backSpeed={30}
+                loop
+              />
             </h2>
             <p className="italic text-gray-700 text-lg">
               Assalamu’alaikum warahmatullahi wabarakatuh.
