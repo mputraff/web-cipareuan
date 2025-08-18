@@ -8,7 +8,7 @@ export default function Profile() {
     <>
       <Navbar />
       {/* About */}
-      <section className="py-12 px-4 bg-[#FFFFF0] max-lg:bg-[#FFFFFF] text-gray-800 max-lg:py-4">
+      <section className="py-12 px-4 bg-[#F9F6F3] max-lg:bg-[#FFFFFF] text-gray-800 max-lg:py-4">
         <div className="max-w-screen-xl mx-auto flex flex-row gap-6 max-lg:flex-col">
           <div className="w-4/5 flex flex-col border rounded-lg shadow-lg border-[#437057] py-4 px-8 bg-white max-lg:w-full max-lg:border-none max-lg:shadow-none">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">

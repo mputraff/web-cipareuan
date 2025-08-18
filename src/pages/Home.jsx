@@ -5,7 +5,7 @@ import Maps from "../components/Maps";
 import News from "../components/News";
 import Potensi from "../components/Potensi";
 import Struktur from "../components/Struktur";
-import ProfileImage from "../assets/img/profile.jpg";
+import ImageKades from "../assets/img/Putra-Fauzan.jpeg";
 import { ReactTyped } from "react-typed";
 import * as motion from "motion/react-client"
 
@@ -16,7 +16,7 @@ export default function Home() {
         <Navbar />
       </header>
       <section className="h-svh bg-[url('../src/assets/img/home.png')] bg-center bg-cover"></section>
-      <section className="flex flex-col gap-4 pt-4 bg-[#FFFFF0]">
+      <section className="flex flex-col gap-4 pt-4 bg-[#F9F6F3]">
         {/* buat animasi fade in */}
         <motion.div
           initial={{ opacity: 0, y: 50 }} // posisi awal
@@ -28,7 +28,7 @@ export default function Home() {
           {/* Foto Kades */}
           <aside className="flex-shrink-0">
             <img
-              src={ProfileImage}
+              src={ImageKades}
               alt="Kepala Desa Cipareuan"
               className="w-72 h-72 md:w-64 md:h-64 object-cover rounded-2xl shadow-lg border-4 border-white"
             />

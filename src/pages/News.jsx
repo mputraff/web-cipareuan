@@ -3,10 +3,11 @@ import CardNews from "../components/CardNews";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import beritaList from "../assets/data/beritaData";
+import { motion } from "motion/react"; // ganti importnya biar lebih clean
 
 export default function News() {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6; 
+  const itemsPerPage = 6;
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -14,10 +15,35 @@ export default function News() {
 
   const totalPages = Math.ceil(beritaList.length / itemsPerPage);
 
+  // Variants animasi parent (container)
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2, // muncul satu-satu tiap 0.2 detik
+      },
+    },
+  };
+
+  // Variants animasi untuk tiap card
+  const cardVariants = {
+    hidden: { opacity: 0, scale: 0.9, y: 30 },
+    show: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <>
       <Navbar />
-      <section className="bg-[#FFFFF0] flex justify-center max-xl:bg-[#fffff0]">
+      <section className="bg-[#F9F6F3] flex justify-center ">
         <div className="max-w-screen-xl w-full my-8 p-9 flex flex-col gap-4 bg-white border border-gray-300 rounded-xl shadow-md max-xl:bg-[#fffff0] max-lg:my-0 max-xl:border-none max-xl:shadow-none">
           <div className="flex flex-col gap-2 ml-1">
             <h2 className="text-4xl font-bold">Berita Desa</h2>
@@ -26,19 +52,25 @@ export default function News() {
             </p>
           </div>
 
-          {/* List Berita */}
-          <div className="flex flex-wrap justify-center gap-6">
+          {/* List Berita dengan animasi */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="show"
+            className="flex flex-wrap justify-center gap-6"
+          >
             {currentItems.map((berita) => (
-              <CardNews
-                key={berita.id}
-                id={berita.id}
-                title={berita.title}
-                desc={berita.desc}
-                image={berita.image}
-                backgrond={"bg-[#FFFFF0]"}
-              />
+              <motion.div key={berita.id} variants={cardVariants}>
+                <CardNews
+                  id={berita.id}
+                  title={berita.title}
+                  desc={berita.desc}
+                  image={berita.image}
+                  backgrond={"bg-[#FFFFF0]"}
+                />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Pagination */}
           <div className="flex justify-center gap-2 mt-2">
