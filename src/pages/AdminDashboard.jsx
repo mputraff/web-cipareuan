@@ -13,11 +13,13 @@ import {
 import adminPhoto from "../assets/img/profile.jpg"; // ganti dengan foto profil admin
 import beritaList from "../assets/data/beritaData";
 import AddNews from "../components/admin/AddNews";
+import EditNews from "../components/admin/EditNews";
 
 export default function AdminDashboard() {
   const [activeMenu, setActiveMenu] = useState("Dashboard");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditOpen, setIsEditOpen] = useState(false);
   const [berita, setBerita] = useState(beritaList);
 
   const menuItems = [
@@ -29,6 +31,16 @@ export default function AdminDashboard() {
 
   const handleAddNews = (newBerita) => {
     setBerita([newBerita, ...berita]);
+  };
+
+  const handleEditNews = (updatedBerita) => {
+    const updatedBeritaList = berita.map((berita) => {
+      if (berita.id === updatedBerita.id) {
+        return updatedBerita;
+      }
+      return berita;
+    });
+    setBerita(updatedBeritaList);
   };
 
   return (
@@ -130,7 +142,7 @@ export default function AdminDashboard() {
 
         {/* Users Content */}
         {activeMenu === "News" && (
-          <div className={`bg-white shadow rounded-lg p-6 overflow-x-auto ${isModalOpen ? "blur-xs" : ""}`}>
+          <div className={`bg-white shadow rounded-lg p-6 overflow-x-auto ${isModalOpen ? "blur-xs" : ""} ${isEditOpen ? "blur-xs" : ""}`}>
             <div className="flex justify-between mb-5 items-center">
               <h2 className="text-lg font-semibold mb-4">Berita List</h2>
               <button
@@ -166,7 +178,7 @@ export default function AdminDashboard() {
                     </td>
                     <td className="p-2 border">{berita.date}</td>
                     <td className="p-2 border">
-                      <button className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded mr-2 cursor-pointer">
+                      <button onClick={() => setIsEditOpen(true)} className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded mr-2 cursor-pointer">
                         <SquarePen size={20} />
                       </button>
                       <button className="bg-red-500 hover:bg-red-600 text-white py-1 px-2 rounded cursor-pointer">
@@ -203,6 +215,12 @@ export default function AdminDashboard() {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onSubmit={handleAddNews}
+      />
+
+      <EditNews
+        isOpen={isEditOpen}
+        onClose={() => setIsEditOpen(false)}
+        onSubmit={handleEditNews}
       />
     </div>
   );

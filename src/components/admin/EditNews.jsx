@@ -1,7 +1,7 @@
 import { X } from "lucide-react";
 import { useState } from "react";
 
-export default function AddNews({ isOpen, onClose, onSubmit }) {
+export default function EditNews({ isOpen, onClose, onSubmit }) {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [image, setImage] = useState(null);
@@ -37,7 +37,7 @@ export default function AddNews({ isOpen, onClose, onSubmit }) {
           <X size={20} />
         </button>
 
-        <h2 className="text-xl font-bold mb-4">Tambah Berita</h2>
+        <h2 className="text-xl font-bold mb-4">Edit Berita</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Judul */}
@@ -63,18 +63,6 @@ export default function AddNews({ isOpen, onClose, onSubmit }) {
               value={desc}
               onChange={(e) => setDesc(e.target.value)}
               rows="4"
-              className="mt-1 block w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
-          </div>
-
-          {/* Tanggal */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Tanggal
-            </label>
-            <input
-              type="date"
               className="mt-1 block w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />

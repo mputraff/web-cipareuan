@@ -7,6 +7,7 @@ import Potensi from "../components/Potensi";
 import Struktur from "../components/Struktur";
 import ProfileImage from "../assets/img/profile.jpg";
 import { ReactTyped } from "react-typed";
+import * as motion from "motion/react-client"
 
 export default function Home() {
   return (
@@ -16,7 +17,14 @@ export default function Home() {
       </header>
       <section className="h-svh bg-[url('../src/assets/img/home.png')] bg-center bg-cover"></section>
       <section className="flex flex-col gap-4 pt-4 bg-[#FFFFF0]">
-        <div className="max-w-screen-xl bg-[#ffffff] w-full mx-auto flex flex-col md:flex-row items-center gap-8 px-4 py-12 my-4 border border-gray-200 rounded-xl shadow-lg ">
+        {/* buat animasi fade in */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }} // posisi awal
+          whileInView={{ opacity: 1, y: 0 }} // posisi saat terlihat
+          transition={{ duration: 1.5 }} // durasi 1 detik
+          viewport={{ once: true }} // animasi cuma sekali
+          className="max-w-screen-xl bg-[#ffffff] w-full mx-auto flex flex-col md:flex-row items-center gap-8 px-4 py-12 my-4 border border-gray-200 rounded-xl shadow-lg"
+        >
           {/* Foto Kades */}
           <aside className="flex-shrink-0">
             <img
@@ -75,7 +83,7 @@ export default function Home() {
               Desa Cipareuan maupun masyarakat luas.
             </p>
           </div>
-        </div>
+        </motion.div>
 
         <Struktur />
         <Galeri />
