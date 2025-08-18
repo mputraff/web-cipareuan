@@ -6,6 +6,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-solid-svg-icons/faClock";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons/faUser";
+import { faSquareFacebook } from "@fortawesome/free-brands-svg-icons";
+import { faSquareWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { faSquareXTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faSquareLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 export default function DetailNews() {
   const { id } = useParams();
@@ -22,7 +26,8 @@ export default function DetailNews() {
                 <FontAwesomeIcon icon={faHouse} /> / berita desa Cipareuan
               </p>
               <h1 className="text-3xl max-md:text-xl max-md:text-justify font-bold my-2">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus, placeat blanditiis.
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Possimus, placeat blanditiis.
               </h1>
               <div className="flex my-3 gap-4 max-lg:text-sm">
                 <p>
@@ -32,7 +37,11 @@ export default function DetailNews() {
                   <FontAwesomeIcon icon={faUser} /> Ditulis oleh Administrator
                 </p>
               </div>
-              <img className="shadow-md rounded-md mb-3" src="https://flowbite.com/docs/images/blog/image-1.jpg" alt="" />
+              <img
+                className="shadow-md rounded-md mb-3"
+                src="https://flowbite.com/docs/images/blog/image-1.jpg"
+                alt=""
+              />
               <p className="text-gray-700 text-justify">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere
                 dignissimos quibusdam vel expedita ipsa, sint repudiandae magnam
@@ -49,8 +58,32 @@ export default function DetailNews() {
                 labore, dolor fugit nam!
               </p>
 
-              <div className="my-2">
-                <p><span className="font-semibold"> Bagikan :</span> </p>
+              <div className="my-2 flex gap-2">
+                <p>
+                  <span className="font-semibold"> Bagikan :</span>{" "}
+                </p>
+                <ul className="flex items-center gap-2 text-lg">
+                  <li>
+                    <a href="">
+                      <FontAwesomeIcon icon={faSquareFacebook} />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <FontAwesomeIcon icon={faSquareWhatsapp} />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <FontAwesomeIcon icon={faSquareXTwitter} />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <FontAwesomeIcon icon={faSquareLinkedin} />
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
 
@@ -62,7 +95,7 @@ export default function DetailNews() {
               {beritaList.slice(0, 6).map((berita) => (
                 <Link className="flex p-2 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100">
                   <img
-                    className="object-cover h-20 w-20 "
+                    className="object-cover h-20 w-20 rounded-[4px]"
                     src={berita.image}
                     alt=""
                   />

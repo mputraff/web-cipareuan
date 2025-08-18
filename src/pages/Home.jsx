@@ -84,12 +84,11 @@ export default function Home() {
             </p>
           </div>
         </motion.div>
-
         <Struktur />
         <Galeri />
-        <Maps />
         <News />
         <Potensi />
+        <Maps />
         <Footer />
       </section>
     </>

@@ -11,14 +11,14 @@ export default function JumlahAgama() {
           {agamaData.map((data) => (
             <div
               key={data.id}
-              className="flex  items-center bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden"
+              className="flex items-center bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden"
             >
               <img
                 className="object-contain w-32 aspect-square bg-gray-50"
                 src={data.src}
                 alt={data.title}
               />
-              <div className="flex flex-col justify-center p-4 text-center text-left">
+              <div className="flex flex-col justify-center p-4 text-left">
                 <h5 className="mb-1 text-xl font-bold text-gray-900">
                   {data.title}
                 </h5>

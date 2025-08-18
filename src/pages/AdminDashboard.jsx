@@ -8,7 +8,7 @@ import {
   Menu,
   X,
   SquarePen,
-  Trash
+  Trash,
 } from "lucide-react";
 import adminPhoto from "../assets/img/profile.jpg"; // ganti dengan foto profil admin
 import beritaList from "../assets/data/beritaData";
@@ -22,6 +22,15 @@ export default function AdminDashboard() {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [berita, setBerita] = useState(beritaList);
 
+  // state pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
+
+  const totalPages = Math.ceil(berita.length / itemsPerPage);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = berita.slice(indexOfFirstItem, indexOfLastItem);
+
   const menuItems = [
     { name: "Dashboard", icon: <Home size={20} /> },
     { name: "News", icon: <Newspaper size={20} /> },
@@ -34,12 +43,9 @@ export default function AdminDashboard() {
   };
 
   const handleEditNews = (updatedBerita) => {
-    const updatedBeritaList = berita.map((berita) => {
-      if (berita.id === updatedBerita.id) {
-        return updatedBerita;
-      }
-      return berita;
-    });
+    const updatedBeritaList = berita.map((item) =>
+      item.id === updatedBerita.id ? updatedBerita : item
+    );
     setBerita(updatedBeritaList);
   };
 
@@ -49,9 +55,7 @@ export default function AdminDashboard() {
       <aside
         className={`fixed md:static inset-y-0 left-0 z-40 w-64 bg-white shadow-lg flex flex-col transform 
         transition-transform duration-300 ease-in-out 
-        ${
-          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } md:translate-x-0`}
+        ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}
       >
         {/* Profile Admin */}
         <div className="flex flex-col items-center py-6 border-b">
@@ -73,7 +77,7 @@ export default function AdminDashboard() {
               key={item.name}
               onClick={() => {
                 setActiveMenu(item.name);
-                setIsSidebarOpen(false); // auto close di mobile
+                setIsSidebarOpen(false);
               }}
               className={`flex items-center w-full px-4 py-2 rounded-lg text-left transition 
                 ${
@@ -140,9 +144,13 @@ export default function AdminDashboard() {
           </div>
         )}
 
-        {/* Users Content */}
+        {/* News Content */}
         {activeMenu === "News" && (
-          <div className={`bg-white shadow rounded-lg p-6 overflow-x-auto ${isModalOpen ? "blur-xs" : ""} ${isEditOpen ? "blur-xs" : ""}`}>
+          <div
+            className={`bg-white shadow rounded-lg p-6 overflow-x-auto ${
+              isModalOpen ? "blur-xs" : ""
+            } ${isEditOpen ? "blur-xs" : ""}`}
+          >
             <div className="flex justify-between mb-5 items-center">
               <h2 className="text-lg font-semibold mb-4">Berita List</h2>
               <button
@@ -164,11 +172,13 @@ export default function AdminDashboard() {
                 </tr>
               </thead>
               <tbody>
-                {beritaList.map((berita) => (
-                  <tr className="text-center">
+                {currentItems.map((berita) => (
+                  <tr key={berita.id} className="text-center">
                     <td className="p-2 border">{berita.id}</td>
                     <td className="p-2 border">{berita.title}</td>
-                    <td className="p-2 border w-1/2 text-justify">{berita.desc}</td>
+                    <td className="p-2 border w-1/2 text-justify">
+                      {berita.desc}
+                    </td>
                     <td className="p-2 border">
                       <img
                         src={berita.image}
@@ -178,7 +188,10 @@ export default function AdminDashboard() {
                     </td>
                     <td className="p-2 border">{berita.date}</td>
                     <td className="p-2 border">
-                      <button onClick={() => setIsEditOpen(true)} className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded mr-2 cursor-pointer">
+                      <button
+                        onClick={() => setIsEditOpen(true)}
+                        className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded mr-2 cursor-pointer"
+                      >
                         <SquarePen size={20} />
                       </button>
                       <button className="bg-red-500 hover:bg-red-600 text-white py-1 px-2 rounded cursor-pointer">
@@ -189,6 +202,41 @@ export default function AdminDashboard() {
                 ))}
               </tbody>
             </table>
+
+            {/* pagination */}
+            <div className="flex justify-center gap-2 mt-2">
+              <button
+                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+                className="bg-[#437057] h-8 w-7 flex justify-center items-center text-white cursor-pointer disabled:opacity-50"
+              >
+                {"<"}
+              </button>
+
+              {[...Array(totalPages)].map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentPage(i + 1)}
+                  className={`h-8 w-7 flex justify-center items-center cursor-pointer ${
+                    currentPage === i + 1
+                      ? "bg-[#2f4a38] text-white"
+                      : "bg-[#437057] text-white"
+                  }`}
+                >
+                  {i + 1}
+                </button>
+              ))}
+
+              <button
+                onClick={() =>
+                  setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                }
+                disabled={currentPage === totalPages}
+                className="bg-[#437057] h-8 w-7 flex justify-center items-center text-white cursor-pointer disabled:opacity-50"
+              >
+                {">"}
+              </button>
+            </div>
           </div>
         )}
 
