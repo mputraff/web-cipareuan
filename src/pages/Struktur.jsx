@@ -7,7 +7,7 @@ export default function Struktur() {
     <>
       <Navbar />
       <section className="bg-[#FFFFF0] flex justify-center max-xl:bg-[#fffff0]">
-        <div className="max-w-screen-xl w-full my-8 p-9 flex flex-col gap-4 bg-white border rounded-xl shadow-md max-xl:bg-[#fffff0] max-lg:my-0 max-xl:border-none max-xl:shadow-none">
+        <div className="max-w-screen-xl w-full my-8 p-9 flex flex-col gap-4 bg-white border rounded-xl shadow-md max-lg:border-none max-lg:my-0">
           <div className="flex flex-col">
             <h2 className="text-4xl font-bold">SOTK</h2>
             <p className="text-gray-600">

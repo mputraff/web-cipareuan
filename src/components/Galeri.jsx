@@ -22,7 +22,7 @@ export default function Galeri() {
             "image-9.jpg",
             "image-10.jpg",
             "image-11.jpg",
-          ].map((img, index) => (
+          ].slice(0, 6).map((img, index) => (
             <div key={index}>
               <img
                 className="h-auto max-w-full rounded-lg"

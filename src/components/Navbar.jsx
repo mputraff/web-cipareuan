@@ -15,7 +15,7 @@ export default function Navbar() {
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 max-lg:px-4">
         <Link to={"/"} className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src={Logo} className="h-10" alt="Kab Garut Logo" />
-          <span className="self-center text-xl font-semibold whitespace-nowrap text-white ">Desa Cipareuan</span>
+          <span className="self-center text-xl font-semibold whitespace-nowrap text-white max-lg:text-lg">Desa Cipareuan</span>
         </Link>
         <button
           onClick={toggleNavbar}

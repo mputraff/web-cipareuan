@@ -7,7 +7,7 @@ import Potensi from "../components/Potensi";
 import Struktur from "../components/Struktur";
 import ImageKades from "../assets/img/Putra-Fauzan.jpeg";
 import { ReactTyped } from "react-typed";
-import * as motion from "motion/react-client"
+import * as motion from "motion/react-client";
 
 export default function Home() {
   return (
@@ -19,27 +19,27 @@ export default function Home() {
       <section className="flex flex-col gap-4 pt-4 bg-[#F9F6F3]">
         {/* buat animasi fade in */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }} // posisi awal
-          whileInView={{ opacity: 1, y: 0 }} // posisi saat terlihat
-          transition={{ duration: 1.5 }} // durasi 1 detik
-          viewport={{ once: true }} // animasi cuma sekali
-          className="max-w-screen-xl bg-[#ffffff] w-full mx-auto flex flex-col md:flex-row items-center gap-8 px-4 py-12 my-4 border border-gray-200 rounded-xl shadow-lg"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5 }}
+          viewport={{ once: true }}
+          className="max-w-screen-xl bg-[#ffffff] w-full mx-auto flex flex-col md:flex-row items-center gap-8 px-4 py-12 my-4 border border-gray-200 rounded-xl shadow-lg max-lg:my-0 max-lg:rounded-none max-sm:shadow-none"
         >
           {/* Foto Kades */}
           <aside className="flex-shrink-0">
             <img
               src={ImageKades}
               alt="Kepala Desa Cipareuan"
-              className="w-72 h-72 md:w-64 md:h-64 object-cover rounded-2xl shadow-lg border-4 border-white"
+              className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 object-cover rounded-2xl shadow-lg border-4 border-white"
             />
-            <p className="text-center mt-4 font-semibold text-gray-700 text-lg">
+            <p className="text-center mt-4 font-semibold text-gray-700 text-sm sm:text-base md:text-lg">
               Kepala Desa Cipareuan
             </p>
           </aside>
 
           {/* Sambutan */}
           <div className="flex flex-col gap-4 text-justify leading-relaxed text-gray-800">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
               <ReactTyped
                 strings={[
                   "Selamat datang di Website Desa Cipareuan",
@@ -51,10 +51,12 @@ export default function Home() {
                 loop
               />
             </h2>
-            <p className="italic text-gray-700 text-lg">
+
+            <p className="italic text-gray-700 text-sm sm:text-base md:text-lg">
               Assalamu’alaikum warahmatullahi wabarakatuh.
             </p>
-            <p className="text-base md:text-lg">
+
+            <p className="text-sm sm:text-base md:text-lg">
               Dalam rangka mewujudkan tata kelola pemerintahan desa Cipareuan
               yang bersih, jujur, partisipatif, transparan, dan akuntabel,
               melalui website ini saya selaku Kepala Desa Cibiuk Cipareuan
@@ -65,7 +67,8 @@ export default function Home() {
               Kabupaten Garut. Informasi ini ditujukan khususnya kepada seluruh
               warga desa, namun juga dapat diakses oleh masyarakat umum.
             </p>
-            <p className="text-base md:text-lg">
+
+            <p className="text-sm sm:text-base md:text-lg">
               Alhamdulillah, berkat kepercayaan masyarakat, saya dipercaya
               memimpin Desa Cipareuan. Dengan penuh tanggung jawab, saya
               berkomitmen menjalankan amanah ini secara konsisten, bermartabat,
@@ -75,7 +78,8 @@ export default function Home() {
               berbagai komoditas lainnya. Kami akan terus berupaya memaksimalkan
               potensi tersebut demi kemajuan dan kesejahteraan bersama.
             </p>
-            <p className="text-base md:text-lg">
+
+            <p className="text-sm sm:text-base md:text-lg">
               Website ini juga menjadi wujud perkembangan teknologi informasi,
               yang diharapkan dapat melahirkan ide-ide kreatif dan inovatif
               dalam menggali potensi desa. Selain itu, website ini adalah sarana
