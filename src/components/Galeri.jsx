@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
+
 export default function Galeri() {
   return (
-    <section className="min-h-screen my-8 flex justify-center items-center px-4">
-      <div className="max-w-screen-xl w-full flex flex-col gap-8">
+    <section className="min-h-fit my-8 flex justify-center items-center px-4">
+      <div className="max-w-screen-xl w-full flex flex-col gap-4">
         <div className="flex flex-col">
           <h2 className="text-4xl font-bold">Galeri Desa</h2>
           <p className="text-gray-600">Kegiatan Desa Cipareuan</p>
@@ -31,6 +33,10 @@ export default function Galeri() {
               />
             </div>
           ))}
+        </div>
+
+        <div className="flex justify-end">
+          <Link to={"/galeri-desa"} className="font-semibold">Lihat Semua Galeri</Link>
         </div>
       </div>
     </section>
