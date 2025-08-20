@@ -4,12 +4,14 @@ import sekdesImg from "../img/sekdes.jpg";
 import kadus2Img from "../img/kadus2.jpg";
 import ratnaImg from "../img/ratna.jpg";
 import kadus1Img from "../img/kadus1.jpg";
+import deaImg from "../img/dea.png";
+import intanImg from "../img/intan.jpg";
 
 const strukturOrganisasi = [
   { id: 1, src: kadesImg, nama: "Nandang Mulyadi", jabatan: "Kepala Desa" },
-  { id: 2, src: sekdesImg, nama: "Usep", jabatan: "Sekretaris Desa" },
-  { id: 3, src: profileImg, nama: "Dea Marisa, S.M", jabatan: "Kepala Tata Usaha" },
-  { id: 4, src: profileImg, nama: "Intan Uswatuh, S.E", jabatan: "Kepala Urusan Keuangan" },
+  { id: 2, src: sekdesImg, nama: "Usep, SH", jabatan: "Sekretaris Desa" },
+  { id: 3, src: deaImg, nama: "Dea Marisa, S.M", jabatan: "Kepala Tata Usaha" },
+  { id: 4, src: intanImg, nama: "Intan Uswatuh, S.E", jabatan: "Kepala Urusan Keuangan" },
   { id: 5, src: profileImg, nama: "Tatang Hidayat", jabatan: "Kepala Usulan Perencanaan" },
   { id: 6, src: ratnaImg, nama: "Ratna Wulan", jabatan: "Kepala Seksi Pelayanan" },
   { id: 7, src: profileImg, nama: "Ikbal Rohman, S.IP", jabatan: "Kepala Seksi Kesejahteraan" },

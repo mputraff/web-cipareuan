@@ -3,6 +3,7 @@ import CardNews from "../components/CardNews";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { motion } from "motion/react"; // ganti importnya biar lebih clean
+import { getAllNews } from "../api/newsApi";
 
 export default function News() {
   const [beritaList, setBeritaList] = useState([]);
@@ -12,18 +13,18 @@ export default function News() {
   const urlImage = "http://localhost:8000/storage/";
 
   useEffect(() => {
-    // Fetch data dari API Laravel
-    fetch("http://localhost:8000/api/posts")
-      .then((res) => res.json())
-      .then((data) => {
-        setBeritaList(data); // sesuaikan kalau responsenya pakai {data: [...]}
-        setLoading(false);
-        console.log(data)
-      })
-      .catch((err) => {
+    async function fetchData() {
+      try {
+        const data = await getAllNews(); 
+        setBeritaList(data);
+      } catch (err) {
         console.error("Gagal fetch berita:", err);
+      } finally {
         setLoading(false);
-      });
+      }
+    }
+
+    fetchData();
   }, []);
 
   const indexOfLastItem = currentPage * itemsPerPage;

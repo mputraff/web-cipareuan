@@ -40,7 +40,7 @@ export default function Struktur() {
 
         <div className="text-right">
           <Link to="/struktur-pemerintahan" href="">
-            <p className="font-semibold hover:underline">Lihat Struktur Lebih Lengkap</p>
+            <p className="font-semibold hover:underline max-lg:text-sm">Lihat Struktur Lebih Lengkap</p>
           </Link>
         </div>
       </div>
