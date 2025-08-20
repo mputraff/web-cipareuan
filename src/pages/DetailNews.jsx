@@ -12,7 +12,7 @@ import { faSquareXTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faSquareLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 export default function DetailNews() {
-  const { id } = useParams();
+  const { slug  } = useParams();
 
   return (
     <>
@@ -96,7 +96,7 @@ export default function DetailNews() {
                 <Link className="flex p-2 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100">
                   <img
                     className="object-cover h-20 w-20 rounded-[4px]"
-                    src={berita.image}
+                    src={berita.thumbnail}
                     alt=""
                   />
                   <div className="flex flex-col px-2 justify-between text-justify">

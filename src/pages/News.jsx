@@ -1,13 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CardNews from "../components/CardNews";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import beritaList from "../assets/data/beritaData";
 import { motion } from "motion/react"; // ganti importnya biar lebih clean
 
 export default function News() {
+  const [beritaList, setBeritaList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Fetch data dari API Laravel
+    fetch("http://localhost:8000/api/posts")
+      .then((res) => res.json())
+      .then((data) => {
+        setBeritaList(data); // sesuaikan kalau responsenya pakai {data: [...]}
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Gagal fetch berita:", err);
+        setLoading(false);
+      });
+  }, []);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -53,59 +68,68 @@ export default function News() {
           </div>
 
           {/* List Berita dengan animasi */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="show"
-            className="flex flex-wrap justify-center gap-6"
-          >
-            {currentItems.map((berita) => (
-              <motion.div key={berita.id} variants={cardVariants}>
-                <CardNews
-                  id={berita.id}
-                  title={berita.title}
-                  desc={berita.desc}
-                  image={berita.image}
-                  backgrond={"bg-[#FFFFF0]"}
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Pagination */}
-          <div className="flex justify-center gap-2 mt-2">
-            <button
-              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-              disabled={currentPage === 1}
-              className="bg-[#437057] h-8 w-7 flex justify-center items-center text-white cursor-pointer disabled:opacity-50"
-            >
-              {"<"}
-            </button>
-
-            {[...Array(totalPages)].map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentPage(i + 1)}
-                className={`h-8 w-7 flex justify-center items-center cursor-pointer ${
-                  currentPage === i + 1
-                    ? "bg-[#2f4a38] text-white"
-                    : "bg-[#437057] text-white"
-                }`}
+          {loading ? (
+            <p className="text-center text-gray-500">Loading...</p>
+          ) : (
+            <>
+              {/* List Berita */}
+              <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                animate="show"
+                className="flex flex-wrap justify-center gap-6"
               >
-                {i + 1}
-              </button>
-            ))}
+                {currentItems.map((berita) => (
+                  <motion.div key={berita.id} variants={cardVariants}>
+                    <CardNews
+                      slug={berita.slug}
+                      title={berita.title}
+                      desc={berita.excerpt} // excerpt
+                      image={berita.thumbnail} // thumbnail
+                      backgrond={"bg-[#FFFFF0]"}
+                    />
+                  </motion.div>
+                ))}
+              </motion.div>
 
-            <button
-              onClick={() =>
-                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-              }
-              disabled={currentPage === totalPages}
-              className="bg-[#437057] h-8 w-7 flex justify-center items-center text-white cursor-pointer disabled:opacity-50"
-            >
-              {">"}
-            </button>
-          </div>
+              {/* Pagination */}
+              <div className="flex justify-center gap-2 mt-2">
+                <button
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.max(prev - 1, 1))
+                  }
+                  disabled={currentPage === 1}
+                  className="bg-[#437057] h-8 w-7 flex justify-center items-center text-white cursor-pointer disabled:opacity-50"
+                >
+                  {"<"}
+                </button>
+
+                {[...Array(totalPages)].map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentPage(i + 1)}
+                    className={`h-8 w-7 flex justify-center items-center cursor-pointer ${
+                      currentPage === i + 1
+                        ? "bg-[#2f4a38] text-white"
+                        : "bg-[#437057] text-white"
+                    }`}
+                  >
+                    {i + 1}
+                  </button>
+                ))}
+
+                <button
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                  }
+                  disabled={currentPage === totalPages}
+                  className="bg-[#437057] h-8 w-7 flex justify-center items-center text-white cursor-pointer disabled:opacity-50"
+                >
+                  {">"}
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </section>
       <Footer />
