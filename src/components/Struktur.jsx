@@ -14,24 +14,29 @@ export default function Struktur() {
         </div>
 
         {/* Gambar Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {strukturOrganisasi.slice(0, 4).map((orang) => (
-            <div
-              key={orang.id}
-              className="max-w-sm bg-[#437057] border border-gray-200 rounded-lg shadow-sm "
-            >
-              <img className="rounded-t-lg w-full h-72 object-cover" src={orang.src} alt={orang.nama} />
-              <div className="p-5 text-center">
-                <h5 className="mb-2 text-xl font-bold tracking-tight text-white">
-                  {orang.nama}
-                </h5>
-                <p className="mb-3 font-normal text-white">
-                  {orang.jabatan}
-                </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+            {strukturOrganisasi.slice(0, 4).map((orang) => (
+              <div
+                key={orang.id}
+                className="flex flex-row md:flex-col bg-[#437057] border border-gray-200 rounded-lg shadow-sm overflow-hidden"
+              >
+                {/* Foto */}
+                <img
+                  className="w-24 h-24 md:w-full md:h-72 object-cover"
+                  src={orang.src}
+                  alt={orang.nama}
+                />
+
+                {/* Info */}
+                <div className="flex flex-col justify-center p-4 text-left md:text-center">
+                  <h5 className="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
+                    {orang.nama}
+                  </h5>
+                  <p className="font-normal text-white">{orang.jabatan}</p>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
         <div className="text-right">
           <Link to="/struktur-pemerintahan" href="">

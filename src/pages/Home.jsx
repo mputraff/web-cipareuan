@@ -5,7 +5,7 @@ import Maps from "../components/Maps";
 import News from "../components/News";
 import Potensi from "../components/Potensi";
 import Struktur from "../components/Struktur";
-import ImageKades from "../assets/img/Putra-Fauzan.jpeg";
+import kadesImg from "../assets/img/kades.jpg";
 import { ReactTyped } from "react-typed";
 import * as motion from "motion/react-client";
 
@@ -28,7 +28,7 @@ export default function Home() {
           {/* Foto Kades */}
           <aside className="flex-shrink-0">
             <img
-              src={ImageKades}
+              src={kadesImg}
               alt="Kepala Desa Cipareuan"
               className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 object-cover rounded-2xl shadow-lg border-4 border-white"
             />

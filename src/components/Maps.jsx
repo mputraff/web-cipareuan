@@ -35,7 +35,7 @@ export default function Maps() {
               </div>
             </div>
           </div>
-          <div className="w-full h-96 ">
+          <div className="w-full h-96 max-lg:h-64">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4959.595915685853!2d107.95760597591261!3d-7.076284792926537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68ca06d96dbe7d%3A0xda44f0d2eb0db198!2sKantor%20Desa%20Cipareuan%20-%20Cibiuk!5e1!3m2!1sid!2sid!4v1755500768907!5m2!1sid!2sid"
               width="100%"
