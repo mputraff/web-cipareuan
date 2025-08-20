@@ -44,6 +44,9 @@ export default function Navbar() {
               <Link to={'/berita'} className="block py-2 px-3 text-white hover:text-[#F1BA88] rounded-sm  md:hover:bg-transparent md:border-0 md:p-0 ">Berita</Link>
             </li>
             <li>
+              <Link to={'/layanan-surat'} className="block py-2 px-3 text-white hover:text-[#F1BA88] rounded-sm  md:hover:bg-transparent md:border-0 md:p-0 ">Layanan Surat</Link>
+            </li>
+            <li>
               <Link to={'/contact'} className="block py-2 px-3 text-white hover:text-[#F1BA88] rounded-sm  md:hover:bg-transparent md:border-0 md:p-0 ">Contact</Link>
             </li>
           </ul>

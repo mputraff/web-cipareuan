@@ -9,6 +9,7 @@ export default function News() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
   const [loading, setLoading] = useState(true);
+  const urlImage = "http://localhost:8000/storage/";
 
   useEffect(() => {
     // Fetch data dari API Laravel
@@ -17,6 +18,7 @@ export default function News() {
       .then((data) => {
         setBeritaList(data); // sesuaikan kalau responsenya pakai {data: [...]}
         setLoading(false);
+        console.log(data)
       })
       .catch((err) => {
         console.error("Gagal fetch berita:", err);
@@ -85,7 +87,7 @@ export default function News() {
                       slug={berita.slug}
                       title={berita.title}
                       desc={berita.excerpt} // excerpt
-                      image={berita.thumbnail} // thumbnail
+                      image={urlImage + berita.thumbnail} // image"berita.thumbnail} // thumbnail
                       backgrond={"bg-[#FFFFF0]"}
                     />
                   </motion.div>

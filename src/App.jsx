@@ -9,6 +9,7 @@ import Struktur from "./pages/Struktur";
 import Admin from "./pages/LoginAdmin";
 import AdminDashboard from "./pages/AdminDashboard";
 import Galeri from "./pages/Galeri";
+import Surat from "./pages/Surat";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/galeri-desa" element={<Galeri />} />
+          <Route path="/layanan-surat" element={<Surat />} />
         </Routes>
       </Router>
     </>
