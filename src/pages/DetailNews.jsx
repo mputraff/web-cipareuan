@@ -33,7 +33,7 @@ export default function DetailNews() {
   const [error, setError] = useState(null);
 
   const isMobile = useIsMobile(); // ✅ aman sekarang
-  const imageBase = import.meta.env.VITE_API_THUMBNAIL;
+  const imageBase = "http://103.65.236.111:8000/storage/";
 
   useEffect(() => {
     async function fetchNews() {

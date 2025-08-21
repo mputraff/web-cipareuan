@@ -13,7 +13,7 @@ export default function News() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
-  const imageThumbnail = import.meta.env.VITE_API_THUMBNAIL;
+  const imageThumbnail = "http://103.65.236.111:8000/storage/";
 
   useEffect(() => {
     async function fetchNews() {
