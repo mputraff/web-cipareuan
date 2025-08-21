@@ -15,8 +15,30 @@ export default function Home() {
       <header>
         <Navbar />
       </header>
-      <section className="h-svh bg-[url('../src/assets/img/home.png')] bg-center bg-cover"></section>
-      <section className="flex flex-col gap-4 pt-4 bg-[#F9F6F3]">
+
+      <section className="min-h-[820px] bg-[url('../src/assets/img/bghome.png')] bg-center bg-cover flex flex-col justify-center items-center gap-6 px-4 text-center">
+        <motion.h2
+          initial={{ opacity: 0, y: -50, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white drop-shadow-[2px_2px_6px_rgba(0,0,0,0.8)] max-w-4xl"
+        >
+          Selamat Datang di Website Resmi Desa Cipareuan
+        </motion.h2>
+
+        {/* Deskripsi */}
+        <motion.p
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+          className="text-base sm:text-lg md:text-xl lg:text-2xl text-white drop-shadow-[1px_1px_4px_rgba(0,0,0,0.7)] max-w-3xl"
+        >
+          Situs ini memberikan informasi terkini dan terpercaya tentang Desa
+          Cipareuan, Kecamatan Cibiuk, Kabupaten Garut.
+        </motion.p>
+      </section>
+
+      <section className="flex flex-col gap-4 pt-4 bg-[#F9F6F3] max-lg:pt-0">
         {/* buat animasi fade in */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}

@@ -20,7 +20,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/infografis" element={<Infografis />} />
           <Route path="/berita" element={<News />} />
-          <Route path="/berita/:slug" element={<DetailNews />} />
+          <Route path="/berita/:id" element={<DetailNews />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/struktur-pemerintahan" element={<Struktur />} />
           <Route path="/admin" element={<Admin />} />

@@ -2,6 +2,7 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import React, { useState } from "react";
 import DropDown from "../components/DropDown";
+import { motion } from "framer-motion";
 
 export default function Surat() {
   const [formData, setFormData] = useState({
@@ -30,36 +31,59 @@ RT: ${formData.rt}\n
 Jenis Surat: ${formData.surat}\n\n
 Mohon bantuannya bapak / ibu, terima kasih.`;
 
-    // Nomor tujuan WhatsApp (ubah sesuai admin desa)
-    const phone = "6289509632340";
-
-    // Encode pesan & buka WA
+    const phone = "6289509632340"; // ganti sesuai admin
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
+  };
+
+  // Variants untuk animasi
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 40 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
   return (
     <>
       <Navbar />
-      <section className="bg-[#FFFFF0] flex justify-center">
-        <div className="max-w-screen-md w-full my-8 p-9 flex flex-col gap-6 bg-white border rounded-2xl shadow-lg">
+      <section className="bg-[#FFFFF0] flex justify-center px-4">
+        <motion.div
+          initial="hidden"
+          animate="show"
+          variants={containerVariants}
+          className="max-w-screen-md w-full my-8 p-9 flex flex-col gap-6 bg-white border rounded-2xl shadow-lg"
+        >
           {/* Header */}
-          <div className="flex flex-col mb-4 text-center">
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col mb-4 text-center"
+          >
             <h2 className="text-3xl font-bold">Layanan Surat</h2>
             <p className="text-gray-600">
               Isi data warga untuk pengajuan surat
             </p>
-          </div>
+          </motion.div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+          <motion.form
+            onSubmit={handleSubmit}
+            className="flex flex-col gap-5"
+            variants={containerVariants}
+          >
             {/* DropDown */}
-            <div>
+            <motion.div variants={itemVariants}>
               <DropDown value={formData.surat} onChange={handleChange} />
-            </div>
+            </motion.div>
 
             {/* Nama */}
-            <div>
+            <motion.div variants={itemVariants}>
               <label className="block text-sm font-medium text-gray-700">
                 Nama Warga
               </label>
@@ -72,10 +96,10 @@ Mohon bantuannya bapak / ibu, terima kasih.`;
                 className="mt-1 w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2"
                 required
               />
-            </div>
+            </motion.div>
 
             {/* No HP */}
-            <div>
+            <motion.div variants={itemVariants}>
               <label className="block text-sm font-medium text-gray-700">
                 No Handphone
               </label>
@@ -88,10 +112,10 @@ Mohon bantuannya bapak / ibu, terima kasih.`;
                 className="mt-1 w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2"
                 required
               />
-            </div>
+            </motion.div>
 
             {/* Dusun */}
-            <div>
+            <motion.div variants={itemVariants}>
               <label className="block text-sm font-medium text-gray-700">
                 Dusun
               </label>
@@ -103,10 +127,13 @@ Mohon bantuannya bapak / ibu, terima kasih.`;
                 placeholder="Nama dusun"
                 className="mt-1 w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2"
               />
-            </div>
+            </motion.div>
 
             {/* RW & RT */}
-            <div className="grid grid-cols-2 gap-4">
+            <motion.div
+              className="grid grid-cols-2 gap-4"
+              variants={itemVariants}
+            >
               <div>
                 <label className="block text-sm font-medium text-gray-700">
                   RW
@@ -133,17 +160,20 @@ Mohon bantuannya bapak / ibu, terima kasih.`;
                   className="mt-1 w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2"
                 />
               </div>
-            </div>
+            </motion.div>
 
             {/* Button */}
-            <button
+            <motion.button
               type="submit"
-              className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3 transition"
+              variants={itemVariants}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-full text-white bg-[#437057] hover:bg-[#305b43] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3 transition"
             >
               Kirim ke Whatsapp
-            </button>
-          </form>
-        </div>
+            </motion.button>
+          </motion.form>
+        </motion.div>
       </section>
       <Footer />
     </>
