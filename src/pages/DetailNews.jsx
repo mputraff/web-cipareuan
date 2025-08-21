@@ -33,7 +33,7 @@ export default function DetailNews() {
   const [error, setError] = useState(null);
 
   const isMobile = useIsMobile(); // ✅ aman sekarang
-  const imageBase = "http://103.65.236.111:8000/storage/";
+  const imageBase = "https103.65.236.111:8000/storage/";
 
   useEffect(() => {
     async function fetchNews() {

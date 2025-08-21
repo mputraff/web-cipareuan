@@ -1,4 +1,4 @@
-const urlApi = "http://103.65.236.111:8000/api/posts";
+const urlApi = "https://103.65.236.111:8000/api/posts";
 
 export async function getAllNews() {
   try {
