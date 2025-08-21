@@ -2,11 +2,12 @@ import imageAbout from "../img/about.png";
 import imageTopografi from "../img/topograpi.png";
 import imageDemografi from "../img/demografi.jpg";
 import imageEconomy from "../img/economy.jpg";
+import imageProfile1 from "../img/imgProfile1.jpeg";
 
 const profileData = [
   {
     id: 1,
-    src: imageAbout,
+    src: imageProfile1,
     title: "",
     alt: "profile-image",
     desc: "Desa Cipareuan terletak di Kecamatan Cibiuk, Kabupaten Garut, dengan luas wilayah 434,99 hektar. Desa ini terdiri dari 10 RW dan 39 RT, serta terbagi menjadi tiga dusun utama. Secara geografis, Cipareuan berada di bawah lereng Pegunungan Haruman dengan ketinggian 650–1.125 meter di atas permukaan laut. Batas wilayahnya meliputi Desa Cibiuk Kaler dan Lingkung Pasir di utara, Desa Cibiuk Kidul di timur, Desa Sindang Sari di selatan, serta Desa Karang Anyar di barat. Akses menuju ibu kota kecamatan hanya berjarak 0,5 km, sementara ke pusat Kabupaten Garut sekitar 21 km",

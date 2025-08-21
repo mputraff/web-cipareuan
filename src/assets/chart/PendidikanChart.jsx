@@ -1,4 +1,3 @@
-// Import library yang diperlukan dari React dan Recharts
 import React from 'react';
 import {
   BarChart,
@@ -12,8 +11,7 @@ import {
   LabelList
 } from 'recharts';
 
-// 1. Data dari tabel pendidikan Anda
-// Nilai untuk 'Perempuan' dibuat negatif agar bar mengarah ke kiri
+// Data
 const educationData = [
   { pendidikan: 'SD / Sederajat', 'Laki-laki': 282, 'Perempuan': -385 },
   { pendidikan: 'SMP / Sederajat', 'Laki-laki': 363, 'Perempuan': -222 },
@@ -21,71 +19,61 @@ const educationData = [
   { pendidikan: 'Perguruan Tinggi', 'Laki-laki': 10, 'Perempuan': -12 },
 ];
 
-// 2. Fungsi untuk format label sumbu X (menghilangkan tanda minus)
-const formatXAxisTick = (tickItem) => {
-  return Math.abs(tickItem);
-};
+// Format angka di X axis → hilangkan minus
+const formatXAxisTick = (tickItem) => Math.abs(tickItem);
 
-// 3. Fungsi untuk format Tooltip (menampilkan nilai absolut saat hover)
+// Tooltip sederhana
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
-    // Menemukan data untuk Laki-laki dan Perempuan berdasarkan nama
-    const maleData = payload.find(p => p.dataKey === 'Laki-laki');
-    const femaleData = payload.find(p => p.dataKey === 'Perempuan');
-
     return (
-      <div className="custom-tooltip" style={{ backgroundColor: '#fff', border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}>
-        <p className="label" style={{ fontWeight: 'bold' }}>{label}</p>
-        {maleData && <p style={{ color: maleData.color }}>{`Laki-laki: ${maleData.value}`}</p>}
-        {femaleData && <p style={{ color: femaleData.color }}>{`Perempuan: ${Math.abs(femaleData.value)}`}</p>}
+      <div
+        style={{
+          background: '#fff',
+          border: '1px solid #ccc',
+          borderRadius: '6px',
+          padding: '8px 12px'
+        }}
+      >
+        <p style={{ fontWeight: 600, marginBottom: 4 }}>{label}</p>
+        {payload.map((entry, index) => (
+          <p key={index} style={{ margin: 0, color: entry.color }}>
+            {entry.name}: {Math.abs(entry.value)}
+          </p>
+        ))}
       </div>
     );
   }
   return null;
 };
 
-// 4. Komponen utama untuk grafik
 const EducationChart = () => {
   return (
-    <ResponsiveContainer width="100%" height={400}>
-      <BarChart
-        layout="vertical"
-        data={educationData}
-        margin={{ top: 20, right: 40, left: 30, bottom: 5 }}
-        stackOffset="sign" // Membuat bar menyebar dari sumbu nol
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        
-        {/* Sumbu X (Jumlah Orang) */}
-        <XAxis type="number" tickFormatter={formatXAxisTick} />
+    <div className="w-full h-[400px]">
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart
+          layout="vertical"
+          data={educationData}
+          margin={{ top: 20, right: 30, left: 20, bottom: 10 }}
+          stackOffset="sign"
+        >
+          <CartesianGrid strokeDasharray="3 3" />
 
-        {/* Sumbu Y (Tingkat Pendidikan) */}
-        <YAxis 
-          type="category" 
-          dataKey="pendidikan" 
-          width={110} // Beri ruang lebih jika label panjang
-        />
+          <XAxis type="number" tickFormatter={formatXAxisTick} />
+          <YAxis type="category" dataKey="pendidikan" width={120} />
 
-        {/* Tooltip kustom saat hover */}
-        <Tooltip cursor={{fill: '#f5f5f5'}} content={<CustomTooltip />} />
+          <Tooltip content={<CustomTooltip />} />
+          <Legend />
 
-        {/* Legenda */}
-        <Legend />
+          <Bar dataKey="Laki-laki" name="Laki-laki" fill="#3b82f6" stackId="stack">
+            <LabelList dataKey="Laki-laki" position="right" formatter={(v) => Math.abs(v)} />
+          </Bar>
 
-        {/* Bar untuk Laki-laki */}
-        <Bar dataKey="Laki-laki" name="Laki-laki" fill="#3b82f6" stackId="stack">
-            {/* Menampilkan label angka di dalam/samping bar */}
-            <LabelList dataKey="Laki-laki" position="right" offset={8} style={{ fill: '#000' }}/>
-        </Bar>
-
-        {/* Bar untuk Perempuan */}
-        <Bar dataKey="Perempuan" name="Perempuan" fill="#ec4899" stackId="stack">
-            {/* Menampilkan label angka (nilai absolut) di dalam/samping bar */}
-            <LabelList dataKey="Perempuan" position="left" offset={8} formatter={(value) => Math.abs(value)} style={{ fill: '#000' }}/>
-        </Bar>
-
-      </BarChart>
-    </ResponsiveContainer>
+          <Bar dataKey="Perempuan" name="Perempuan" fill="#ec4899" stackId="stack">
+            <LabelList dataKey="Perempuan" position="left" formatter={(v) => Math.abs(v)} />
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 

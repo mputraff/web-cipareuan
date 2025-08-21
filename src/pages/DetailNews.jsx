@@ -12,7 +12,23 @@ import { faSquareXTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faSquareLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 export default function DetailNews() {
-  const { slug  } = useParams();
+  const { id } = useParams();
+
+  // Cari berita berdasarkan id
+  const berita = beritaList.find((item) => item.id === id);
+
+  // Kalau id tidak ditemukan
+  if (!berita) {
+    return (
+      <>
+        <Navbar />
+        <section className="min-h-screen flex justify-center items-center">
+          <h2 className="text-2xl font-bold">Berita tidak ditemukan 😢</h2>
+        </section>
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>
@@ -26,12 +42,11 @@ export default function DetailNews() {
                 <FontAwesomeIcon icon={faHouse} /> / berita desa Cipareuan
               </p>
               <h1 className="text-3xl max-md:text-xl max-md:text-justify font-bold my-2">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Possimus, placeat blanditiis.
+                {berita.title}
               </h1>
               <div className="flex my-3 gap-4 max-lg:text-sm">
                 <p>
-                  <FontAwesomeIcon icon={faClock} /> 23 Agustus 2025
+                  <FontAwesomeIcon icon={faClock} /> {berita.date}
                 </p>
                 <p>
                   <FontAwesomeIcon icon={faUser} /> Ditulis oleh Administrator
@@ -39,24 +54,10 @@ export default function DetailNews() {
               </div>
               <img
                 className="shadow-md rounded-md mb-3"
-                src="https://flowbite.com/docs/images/blog/image-1.jpg"
-                alt=""
+                src={berita.image}
+                alt={berita.alt}
               />
-              <p className="text-gray-700 text-justify">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere
-                dignissimos quibusdam vel expedita ipsa, sint repudiandae magnam
-                possimus nobis, nostrum, commodi quidem sed ab ut. Ipsam esse
-                nemo eveniet optio rerum consequatur totam eum dicta sed,
-                repellendus reprehenderit. Voluptas aperiam, magnam quia
-                perspiciatis modi deleniti, voluptates fugiat optio et
-                assumenda, voluptatibus reprehenderit. Provident consequuntur
-                repellat quae dignissimos possimus eveniet vero ex, corporis
-                inventore tempora explicabo? Porro ratione possimus nam quos
-                unde facere esse veritatis nesciunt fugiat blanditiis? Odit
-                molestiae facere quaerat ex, illum laudantium? Ea, eaque officia
-                placeat vitae alias optio beatae eveniet nemo vel numquam
-                labore, dolor fugit nam!
-              </p>
+              <p className="text-gray-700 text-justify max-md:text-sm">{berita.desc}</p>
 
               <div className="my-2 flex gap-2">
                 <p>
@@ -91,30 +92,34 @@ export default function DetailNews() {
             <div className="w-[23%] flex flex-col gap-2 max-lg:w-full">
               <h2 className="text-xl font-semibold">Berita Lainnya</h2>
 
-              {/* Card Berita Lain */}
-              {beritaList.slice(0, 6).map((berita) => (
-                <Link className="flex p-2 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100">
-                  <img
-                    className="object-cover h-20 w-20 rounded-[4px]"
-                    src={berita.thumbnail}
-                    alt=""
-                  />
-                  <div className="flex flex-col px-2 justify-between text-justify">
-                    <h5 className="text-sm font-semibold text-gray-900">
-                      {berita.title}
-                    </h5>
-                    <ul>
-                      <li className="text-xs text-gray-500 mb-1 flex gap-1 items-center">
-                        <FontAwesomeIcon icon={faClock} />
-                        {berita.date}
-                      </li>
-                      <li className="text-xs text-gray-500">Administrator</li>
-                    </ul>
-                  </div>
-                </Link>
-              ))}
-
-              {/* Tambahkan lebih banyak berita lainnya jika mau */}
+              {beritaList
+                .filter((item) => item.id !== id) // jangan tampilkan berita yang sedang dibuka
+                .slice(0, 6)
+                .map((item) => (
+                  <Link
+                    key={item.id}
+                    to={`/berita/${item.id}`}
+                    className="flex p-2 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100"
+                  >
+                    <img
+                      className="object-cover h-20 w-20 rounded-[4px]"
+                      src={item.image}
+                      alt={item.alt}
+                    />
+                    <div className="flex flex-col px-2 justify-between text-justify">
+                      <h5 className="text-sm font-semibold text-gray-900">
+                        {item.title}
+                      </h5>
+                      <ul>
+                        <li className="text-xs text-gray-500 mb-1 flex gap-1 items-center">
+                          <FontAwesomeIcon icon={faClock} />
+                          {item.date}
+                        </li>
+                        <li className="text-xs text-gray-500">Administrator</li>
+                      </ul>
+                    </div>
+                  </Link>
+                ))}
             </div>
           </div>
         </div>

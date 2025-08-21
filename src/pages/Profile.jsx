@@ -52,14 +52,14 @@ export default function Profile() {
             variants={sectionVariants}
             className="w-4/5 flex flex-col border rounded-lg shadow-lg border-[#437057] py-4 px-8 bg-white max-lg:w-full max-lg:border-none max-lg:shadow-none"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
               Profile Desa Cipareuan
             </h2>
             {profileData.map((data) => (
               <motion.div
                 key={data.id}
                 variants={sectionVariants}
-                className="my-3 flex flex-col gap-4"
+                className="my-2 flex flex-col gap-4"
               >
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-bold">
                   {data.title}

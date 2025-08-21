@@ -7,6 +7,7 @@ import Potensi from "../components/Potensi";
 import Struktur from "../components/Struktur";
 import kadesImg from "../assets/img/kades.jpg";
 import { ReactTyped } from "react-typed";
+import Pencapaian from "../components/Pencapaian";
 import * as motion from "motion/react-client";
 
 export default function Home() {
@@ -16,12 +17,12 @@ export default function Home() {
         <Navbar />
       </header>
 
-      <section className="min-h-[820px] bg-[url('../src/assets/img/bghome.png')] bg-center bg-cover flex flex-col justify-center items-center gap-6 px-4 text-center">
+      <section className="h-[820px] max-md:h-[600px] bg-[url('../src/assets/img/bghome.png')] bg-center bg-cover flex flex-col justify-center items-center gap-6 px-4 text-center">
         <motion.h2
           initial={{ opacity: 0, y: -50, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white drop-shadow-[2px_2px_6px_rgba(0,0,0,0.8)] max-w-4xl"
+          className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white drop-shadow-[2px_2px_6px_rgba(0,0,0,0.8)] max-w-4xl"
         >
           Selamat Datang di Website Resmi Desa Cipareuan
         </motion.h2>
@@ -31,7 +32,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
-          className="text-base sm:text-lg md:text-xl lg:text-2xl text-white drop-shadow-[1px_1px_4px_rgba(0,0,0,0.7)] max-w-3xl"
+          className="text-xs max-md:px-4 sm:text-lg md:text-xl lg:text-2xl text-white drop-shadow-[1px_1px_4px_rgba(0,0,0,0.7)] max-w-3xl"
         >
           Situs ini memberikan informasi terkini dan terpercaya tentang Desa
           Cipareuan, Kecamatan Cibiuk, Kabupaten Garut.
@@ -111,6 +112,7 @@ export default function Home() {
           </div>
         </motion.div>
         <Struktur />
+        <Pencapaian />
         <Galeri />
         <News />
         <Potensi />

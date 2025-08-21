@@ -16,7 +16,7 @@ export default function News() {
             {beritaList.slice(0, 6).map((berita) => (
               <CardNews
                 key={berita.id}
-                id={berita.id}
+                slug={berita.id}
                 title={berita.title}
                 desc={berita.desc}
                 image={berita.image}
