@@ -26,7 +26,7 @@ export default function Pencapaian() {
             </h2>
           </div>
 
-          <div className="max-w-screen-xl bg-white w-full mx-auto flex flex-col items-center gap-8 px-5 py-6 border border-gray-200 rounded-xl shadow-lg max-lg:my-0 max-lg:rounded-none max-sm:shadow-none">
+          <div className="max-w-screen-xl bg-white w-full mx-auto flex flex-col items-center gap-8 px-5 py-6 border border-gray-200 rounded-xl shadow-lg max-lg:my-0">
             {/* Carousel */}
             <div className="relative w-full md:h-full overflow-hidden rounded-md shadow-xl border">
               {/* Wrapper */}

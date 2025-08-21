@@ -62,7 +62,7 @@ export default function Home() {
 
           {/* Sambutan */}
           <div className="flex flex-col gap-4 text-justify leading-relaxed text-gray-800">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2 text-left">
               <ReactTyped
                 strings={[
                   "Selamat datang di Website Desa Cipareuan",
