@@ -9,6 +9,7 @@ import Struktur from "./pages/Struktur";
 import Galeri from "./pages/Galeri";
 import Surat from "./pages/Surat";
 import Error404 from "./pages/404";
+import Potensi from "./pages/Potensi";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/struktur-pemerintahan" element={<Struktur />} />
           <Route path="/galeri-desa" element={<Galeri />} />
           <Route path="/layanan-surat" element={<Surat />} />
+          <Route path="/potensi" element={<Potensi />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
       </Router>

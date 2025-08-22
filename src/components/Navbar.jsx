@@ -11,7 +11,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-[#437057] border-[#fffff0] ">
+    <nav className="bg-[#437057] border-[#fffff0]">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 max-lg:px-4">
         <Link to={"/"} className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src={Logo} className="h-10" alt="Kab Garut Logo" />
