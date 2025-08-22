@@ -2,6 +2,20 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { motion } from "motion/react"; // import motion
 
+// Import semua gambar
+import galeri1 from "../assets/img/galeri/galeri1.jpeg";
+import galeri2 from "../assets/img/galeri/galeri2.jpeg";
+import galeri3 from "../assets/img/galeri/galeri3.jpeg";
+import galeri4 from "../assets/img/galeri/galeri4.jpeg";
+import galeri5 from "../assets/img/galeri/galeri5.jpeg";
+import galeri6 from "../assets/img/galeri/galeri6.jpeg";
+import galeri7 from "../assets/img/galeri/galeri7.jpeg";
+import galeri8 from "../assets/img/galeri/galeri8.jpeg";
+import galeri9 from "../assets/img/galeri/galeri9.jpeg";
+import galeri10 from "../assets/img/galeri/galeri10.jpeg";
+import galeri11 from "../assets/img/galeri/galeri11.JPG";
+import galeri12 from "../assets/img/galeri/galeri12.jpeg";
+
 export default function Galeri() {
   // Variants untuk animasi container (stagger children)
   const containerVariants = {
@@ -27,6 +41,21 @@ export default function Galeri() {
     },
   };
 
+  const images = [
+    galeri1,
+    galeri2,
+    galeri3,
+    galeri4,
+    galeri5,
+    galeri6,
+    galeri7,
+    galeri8,
+    galeri9,
+    galeri10,
+    galeri11,
+    galeri12,
+  ];
+
   return (
     <>
       <Navbar />
@@ -50,7 +79,7 @@ export default function Galeri() {
             <p className="text-gray-600">Galeri Kegiatan Desa Cipareuan</p>
           </motion.div>
 
-          {/* Gambar Grid Masonry */}
+          {/* Gambar Grid */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -58,20 +87,7 @@ export default function Galeri() {
             viewport={{ once: true }}
             className="grid grid-cols-2 md:grid-cols-3 gap-4"
           >
-            {[
-              "image.jpg",
-              "image-1.jpg",
-              "image-2.jpg",
-              "image-3.jpg",
-              "image-4.jpg",
-              "image-5.jpg",
-              "image-6.jpg",
-              "image-7.jpg",
-              "image-8.jpg",
-              "image-9.jpg",
-              "image-10.jpg",
-              "image-11.jpg",
-            ].map((img, index) => (
+            {images.map((img, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
@@ -80,9 +96,9 @@ export default function Galeri() {
                 className="overflow-hidden rounded-lg shadow-md hover:shadow-xl cursor-pointer"
               >
                 <motion.img
-                  src={`https://flowbite.s3.amazonaws.com/docs/gallery/square/${img}`}
+                  src={img}
                   alt={`Galeri Desa ${index + 1}`}
-                  className="h-auto w-full object-cover rounded-lg"
+                  className="h-72 w-full object-cover rounded-lg"
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.4 }}
                 />

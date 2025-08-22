@@ -1,21 +1,35 @@
 import { Link } from "react-router-dom";
 import * as motion from "motion/react-client";
 
+import galeri1 from "../assets/img/galeri/galeri1.jpeg";
+import galeri2 from "../assets/img/galeri/galeri2.jpeg";
+import galeri3 from "../assets/img/galeri/galeri3.jpeg";
+import galeri4 from "../assets/img/galeri/galeri4.jpeg";
+import galeri5 from "../assets/img/galeri/galeri5.jpeg";
+import galeri6 from "../assets/img/galeri/galeri6.jpeg";
+import galeri7 from "../assets/img/galeri/galeri7.jpeg";
+import galeri8 from "../assets/img/galeri/galeri8.jpeg";
+import galeri9 from "../assets/img/galeri/galeri9.jpeg";
+import galeri10 from "../assets/img/galeri/galeri10.jpeg";
+import galeri11 from "../assets/img/galeri/galeri11.JPG";
+import galeri12 from "../assets/img/galeri/galeri12.jpeg";
+
 export default function Galeri() {
+  // Array gambar hasil import
   const images = [
-    "image.jpg",
-    "image-1.jpg",
-    "image-2.jpg",
-    "image-3.jpg",
-    "image-4.jpg",
-    "image-5.jpg",
-    "image-6.jpg",
-    "image-7.jpg",
-    "image-8.jpg",
-    "image-9.jpg",
-    "image-10.jpg",
-    "image-11.jpg",
-  ].slice(0, 6);
+    galeri1,
+    galeri2,
+    galeri3,
+    galeri4,
+    galeri5,
+    galeri6,
+    galeri7,
+    galeri8,
+    galeri9,
+    galeri10,
+    galeri11,
+    galeri12,
+  ];
 
   return (
     <section className="min-h-fit my-8 flex justify-center items-center px-4">
@@ -32,9 +46,9 @@ export default function Galeri() {
           <p className="text-gray-600">Kegiatan Desa Cipareuan</p>
         </motion.div>
 
-        {/* Gambar Grid Masonry */}
+        {/* Grid Gambar */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {images.map((img, index) => (
+          {images.slice(0, 6).map((img, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, scale: 0.9 }}
@@ -45,8 +59,8 @@ export default function Galeri() {
               className="overflow-hidden rounded-lg cursor-pointer"
             >
               <img
-                className="h-auto max-w-full rounded-lg object-cover"
-                src={`https://flowbite.s3.amazonaws.com/docs/gallery/square/${img}`}
+                className="h-64 w-full rounded-lg object-cover"
+                src={img}
                 alt={`Galeri Desa ${index + 1}`}
               />
             </motion.div>
