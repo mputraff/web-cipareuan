@@ -31,7 +31,7 @@ RT: ${formData.rt}\n
 Jenis Surat: ${formData.surat}\n\n
 Mohon bantuannya bapak / ibu, terima kasih.`;
 
-    const phone = "6282240544928"; // ganti sesuai admin
+    const phone = "6282115531887"; // ganti sesuai admin
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
   };
