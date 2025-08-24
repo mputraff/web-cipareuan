@@ -1,35 +1,32 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import * as motion from "motion/react-client";
 
-import galeri1 from "../assets/img/galeri/galeri1.jpeg";
-import galeri2 from "../assets/img/galeri/galeri2.jpeg";
-import galeri3 from "../assets/img/galeri/galeri3.jpeg";
-import galeri4 from "../assets/img/galeri/galeri4.jpeg";
-import galeri5 from "../assets/img/galeri/galeri5.jpeg";
-import galeri6 from "../assets/img/galeri/galeri6.jpeg";
-import galeri7 from "../assets/img/galeri/galeri7.jpeg";
-import galeri8 from "../assets/img/galeri/galeri8.jpeg";
-import galeri9 from "../assets/img/galeri/galeri9.jpeg";
-import galeri10 from "../assets/img/galeri/galeri10.jpeg";
-import galeri11 from "../assets/img/galeri/galeri11.JPG";
-import galeri12 from "../assets/img/galeri/galeri12.jpeg";
-
 export default function Galeri() {
-  // Array gambar hasil import
-  const images = [
-    galeri1,
-    galeri2,
-    galeri3,
-    galeri4,
-    galeri5,
-    galeri6,
-    galeri7,
-    galeri8,
-    galeri9,
-    galeri10,
-    galeri11,
-    galeri12,
-  ];
+  const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const imageBaseUrl = import.meta.env.VITE_API_THUMBNAIL;
+  const urlApi = import.meta.env.VITE_API_GALERI;
+
+  useEffect(() => {
+    async function fetchGallery() {
+      try {
+        setLoading(true);
+        const response = await fetch(urlApi);
+        const data = await response.json();
+        setImages(data);
+      } catch (err) {
+        setError("Gagal memuat galeri, coba lagi nanti.");
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchGallery();
+  }, []);
 
   return (
     <section className="min-h-fit my-8 flex justify-center items-center px-4">
@@ -46,26 +43,34 @@ export default function Galeri() {
           <p className="text-gray-600">Kegiatan Desa Cipareuan</p>
         </motion.div>
 
+        {/* Loader & Error Handling */}
+        {loading && (
+          <p className="text-center text-gray-500">Memuat galeri...</p>
+        )}
+        {error && <p className="text-center text-red-500">{error}</p>}
+
         {/* Grid Gambar */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {images.slice(0, 6).map((img, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
-              className="overflow-hidden rounded-lg cursor-pointer"
-            >
-              <img
-                className="h-64 w-full rounded-lg object-cover"
-                src={img}
-                alt={`Galeri Desa ${index + 1}`}
-              />
-            </motion.div>
-          ))}
-        </div>
+        {!loading && !error && (
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {images.slice(0, 6).map((item, index) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.05 }}
+                className="overflow-hidden rounded-lg cursor-pointer"
+              >
+                <img
+                  className="h-64 w-full rounded-lg object-cover"
+                  src={imageBaseUrl + item.image_path}
+                  alt={item.title}
+                />
+              </motion.div>
+            ))}
+          </div>
+        )}
 
         {/* Link */}
         <motion.div
