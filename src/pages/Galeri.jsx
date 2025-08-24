@@ -1,23 +1,44 @@
+import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { motion } from "motion/react"; // import motion
-
-// Import semua gambar
-import galeri1 from "../assets/img/galeri/galeri1.jpeg";
-import galeri2 from "../assets/img/galeri/galeri2.jpeg";
-import galeri3 from "../assets/img/galeri/galeri3.jpeg";
-import galeri4 from "../assets/img/galeri/galeri4.jpeg";
-import galeri5 from "../assets/img/galeri/galeri5.jpeg";
-import galeri6 from "../assets/img/galeri/galeri6.jpeg";
-import galeri7 from "../assets/img/galeri/galeri7.jpeg";
-import galeri8 from "../assets/img/galeri/galeri8.jpeg";
-import galeri9 from "../assets/img/galeri/galeri9.jpeg";
-import galeri10 from "../assets/img/galeri/galeri10.jpeg";
-import galeri11 from "../assets/img/galeri/galeri11.JPG";
-import galeri12 from "../assets/img/galeri/galeri12.jpeg";
+import { motion, AnimatePresence } from "motion/react";
 
 export default function Galeri() {
-  // Variants untuk animasi container (stagger children)
+  const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const imageBaseUrl = import.meta.env.VITE_API_THUMBNAIL;
+  const urlApi = import.meta.env.VITE_API_GALERI;
+
+  useEffect(() => {
+    async function fetchGallery() {
+      try {
+        setLoading(true);
+        const response = await fetch(urlApi);
+        const data = await response.json();
+        setImages(data);
+      } catch (err) {
+        setError("Gagal memuat galeri, coba lagi nanti.");
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchGallery();
+  }, []);
+
+  const handleImageClick = (image) => {
+    setSelectedImage(image);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
+
+  // Variants untuk animasi container
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
@@ -41,20 +62,24 @@ export default function Galeri() {
     },
   };
 
-  const images = [
-    galeri1,
-    galeri2,
-    galeri3,
-    galeri4,
-    galeri5,
-    galeri6,
-    galeri7,
-    galeri8,
-    galeri9,
-    galeri10,
-    galeri11,
-    galeri12,
-  ];
+  // Variants untuk modal
+  const modalVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+      },
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.8,
+      transition: { duration: 0.2 },
+    },
+  };
 
   return (
     <>
@@ -79,34 +104,103 @@ export default function Galeri() {
             <p className="text-gray-600">Galeri Kegiatan Desa Cipareuan</p>
           </motion.div>
 
+          {/* Loader & Error Handling */}
+          {loading && (
+            <p className="text-center text-gray-500">Memuat galeri...</p>
+          )}
+          {error && <p className="text-center text-red-500">{error}</p>}
+
           {/* Gambar Grid */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-3 gap-4"
-          >
-            {images.map((img, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 200, damping: 10 }}
-                className="overflow-hidden rounded-lg shadow-md hover:shadow-xl cursor-pointer"
-              >
-                <motion.img
-                  src={img}
-                  alt={`Galeri Desa ${index + 1}`}
-                  className="h-72 w-full object-cover rounded-lg"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.4 }}
-                />
-              </motion.div>
-            ))}
-          </motion.div>
+          {!loading && !error && (
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="grid grid-cols-2 md:grid-cols-3 gap-4"
+            >
+              {images.map((item) => (
+                <motion.div
+                  key={item.id}
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 10 }}
+                  className="overflow-hidden rounded-lg shadow-md hover:shadow-xl cursor-pointer"
+                  onClick={() => handleImageClick(item)}
+                >
+                  <motion.img
+                    src={imageBaseUrl + item.image_path}
+                    alt={item.title}
+                    className="h-72 w-full object-cover rounded-lg"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.4 }}
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
         </motion.div>
       </section>
+
+      {/* Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
+            onClick={closeModal}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+              variants={modalVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              {/* Gambar */}
+              <div className="relative">
+                <img
+                  src={imageBaseUrl + selectedImage.image_path}
+                  alt={selectedImage.title}
+                  className="w-full h-64 md:h-96 object-cover"
+                />
+                <button
+                  onClick={closeModal}
+                  className="absolute top-4 right-4 bg-white rounded-full p-2 hover:bg-gray-200 transition-colors"
+                >
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Konten */}
+              <div className="p-6">
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                  {selectedImage.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {selectedImage.description}
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <Footer />
     </>
   );
